@@ -17,6 +17,13 @@ fun main(args: Array<String>) {
     //You can also convert between the boxed and primitive arrays using functions such as:
     val otherOddNumbers = arrayOf(1,3,5,7).toIntArray()
 
+   val names: Array<String> = arrayOf("James", "John", "Jenny", "Jenna")
+    println(names[0])
+fun newArray(name1:String, name2:String, name3:String,name4: String){
+    val names: Array<String> = arrayOf(name1, name2, name3, name4)
+    println(names[0])
 
+}
+    newArray("James", "John", "Jenny", "Jenna")
 
 }
