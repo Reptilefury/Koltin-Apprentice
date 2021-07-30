@@ -43,6 +43,11 @@ fun main(args: Array<String>){
     val upComingPlayerSlice = players.slice(1..2)
     println(upComingPlayerSlice.joinToString())
     //using the slice method with ranges is used to fetch more than a single value from an array or List.
+    fun IsEleminated(player: String): Boolean{
+        return player !in players
+    }
+    println(IsEleminated("Bob"))
+    players.slice(0..2).contains("Alice")
 
 
 }

@@ -16,6 +16,11 @@ fun main(args: Array<String>){
 
     }else{
         println("Time to play the game")}
+    fun IsEleminated(player: String): Boolean{
+        return player !in players
+    }
+    println(IsEleminated("Bob"))
+
 
 
 
