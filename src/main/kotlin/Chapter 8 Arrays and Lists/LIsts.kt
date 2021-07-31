@@ -20,6 +20,8 @@ fun main(args: Array<String>){
         return player !in players
     }
     println(IsEleminated("Bob"))
+    //modifying Lists
+    players.add("Charlie Day")
 
 
 

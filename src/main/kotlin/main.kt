@@ -48,6 +48,13 @@ fun main(args: Array<String>){
     }
     println(IsEleminated("Bob"))
     players.slice(0..2).contains("Alice")
-
+    //modifying Lists
+    players.add("Charlie Day")
+    players += "Gina"
+    players += "Jenna"
+    println(players.joinToString())
+    var array = arrayOf(1,2,3)
+    array += 4
+println(array.joinToString())
 
 }
