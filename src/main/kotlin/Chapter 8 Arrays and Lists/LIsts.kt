@@ -22,6 +22,9 @@ fun main(args: Array<String>){
     println(IsEleminated("Bob"))
     //modifying Lists
     players.add("Charlie Day")
+    //removing elements from the lists
+    val wasPlayerRemoved = players.remove("Gina")
+    println("It is $wasPlayerRemoved that Gina was removed ")
 
 
 

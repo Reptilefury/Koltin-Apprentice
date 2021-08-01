@@ -56,5 +56,43 @@ fun main(args: Array<String>){
     var array = arrayOf(1,2,3)
     array += 4
 println(array.joinToString())
+    players.add(5,"Frank")
+    println(array.joinToString())
+    val wasPlayerRemoved = players.remove("Gina")
+    println("It is $wasPlayerRemoved that Gina was removed.")
+    val removedPlayer = players.removeAt(2)
+    println("$removedPlayer was removed")
+    println(players.joinToString())
+    players[3] = "Franklin"
+    println(players.joinToString())
+    players[4] = "Jenna"
+    players[2] ="Anna"
+    players.sort()
+    println(players.joinToString())
+    players.set(3, "Anna")
+    val arrayOfInts = arrayOf(1,2,3)
+    arrayOfInts[0] = 4
+    println(arrayOfInts.joinToString())
+    val scores = listOf(2,2,8,6,1)
+    for(player in players){
+        println(player)
+
+    }
+    for((index, player)in players.withIndex()){
+        println("${index + 1}.$player")
+    }
+    fun sumOfElements(list: List<Int>):Int{
+        var sum = 0
+        for(number in list){
+            sum += number
+        }
+        return sum
+    }
+    println(sumOfElements(scores))
+    for((scores, player) in players.withIndex()){
+        println("${scores + 1 }.$player")
+    }
+
+
 
 }
