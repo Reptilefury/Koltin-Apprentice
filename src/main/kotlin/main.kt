@@ -5,7 +5,7 @@ val names: Array<String> = arrayOf("Jenna", "Jenny", "James", "Lenna")
 }*/
 
 fun main(args: Array<String>){
-    val innerPlannets = listOf("Mercury", "venus", "Mars", "Sartun", "Jupiter")
+    /*val innerPlannets = listOf("Mercury", "venus", "Mars", "Sartun", "Jupiter")
     //Kotlin has inferred the type of this list to be a string
     val subscribers: List<String> = listOf()
     //the type argument can also be inferred on the function this way: listOf<String> but these lists aren't mutable
@@ -91,8 +91,23 @@ println(array.joinToString())
     println(sumOfElements(scores))
     for((scores, player) in players.withIndex()){
         println("${scores + 1 }.$player")
+    }*/
+
+var nullableList: List<Int>? = listOf(1,2,3,4)
+    nullableList = null
+    val array4 = arrayOf(1,2,3)
+    println(array4[0])
+    array4[0] = 4
+    println(array4[0])
+    for((index, array4)in array4.withIndex()){
+        println("${index + 1}.$array4")
     }
+    val array5 = arrayOf(1,2,3)
+    array5[0] = array5[1]
+    for(item in array5){println(item)}
+    fun removeOne(item: Int, list: List<Int>):List<Int>{
+        var removeItem = removeAt()
 
-
+    }
 
 }
