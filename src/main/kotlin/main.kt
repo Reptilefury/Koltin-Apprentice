@@ -137,5 +137,44 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     println("some string".hashCode())
     println(1.hashCode())
     println(false.hashCode())
+        val name = setOf("Anna", "Brian", "Craig", "David", "Anna")
+        println(name)
+    val someArray = arrayOf(1,2,3,4,1)
+    var someSet = mutableSetOf(*someArray)
+    println(someSet)
+  println(someSet.contains(1))
+    println(4 in someSet)
+    println(someSet.first())
+    println(someSet.last())
+    var add = someSet.add(5)
+    val removed = someSet.remove(1)
+    add = someSet.add(6)
 
+    println(someSet)
+    println(removed)
+    var newArray = arrayOf(4,5,6,7,8)
+    var set = mutableSetOf(*newArray)
+    var addElementToArray  = set.add(9)
+    val removeElement = set.remove(4)
+    println(addElementToArray)
+    println(set)
+    //maps challange
+    var emptyMap = emptyMap<Int, Int>()
+    emptyMap += 4 to 6
+    println(emptyMap)
+    val map4 = mutableMapOf("One" to 1, "Two" to 2, "Three" to 3)
+    map4[1]
+    map4["One"]
+    map4["Zero"] = 0
+    println(map4)
+   val map5 =  mutableMapOf("NY" to "New York" , "CA" to "California")
+    map5["NY"]
+    map5["WA"] = "Washington"
+   // map5["CA"] = null
+    for((states, city) in map5){
+        println("$states $city")
+    }
+     fun mergeMaps(map1: Map<String, String>, map2: Map<String, String>): Map<String,String>{
+
+     }
 }
