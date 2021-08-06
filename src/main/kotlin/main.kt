@@ -174,7 +174,27 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     for((states, city) in map5){
         println("$states $city")
     }
-     fun mergeMaps(map1: Map<String, String>, map2: Map<String, String>): Map<String,String>{
+    fun mergeMaps(map1: Map<String, String>, map2: Map<String, String>): Map<String,String>{
+     val mergedMap: MutableMap<String, String> = mutableMapOf()
+         mergedMap.putAll(map1)
+         mergedMap.putAll(map2)
+         return mergedMap
 
      }
+    val firstMap = mapOf("2"  to "4", "2" to "2")
+    val secondMap = mapOf("6" to "8", "3" to "3")
+    mergeMaps(firstMap, secondMap)
+    println("${mergeMaps(firstMap, secondMap)}")
+    //mergeMaps(mapOf("Belgium" to "Brussels"), mapOf("England" to "London"))
+    /*fun mergeMaps(map1: Map<String, String>, map2: Map<String, String>): Map<String, String> {
+        val map3: MutableMap<String, String> = mutableMapOf()
+        map3.putAll(map1)
+        map3.putAll(map2)
+        return map3
+    }
+
+    val firstMap = mapOf("1" to "2", "2" to "2")
+    val secondMap = mapOf("1" to "1", "3" to "3")
+    println(mergeMaps(firstMap, secondMap))*/
+
 }
