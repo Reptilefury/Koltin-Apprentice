@@ -196,5 +196,24 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     val firstMap = mapOf("1" to "2", "2" to "2")
     val secondMap = mapOf("1" to "1", "3" to "3")
     println(mergeMaps(firstMap, secondMap))*/
+    var multiplyLambda: (Int, Int) -> Int
+    multiplyLambda = {
+            a: Int,b: Int -> Int
+        a * b
+    }
+    val lambdaResult = multiplyLambda(4,2)
+  println(lambdaResult)
+    multiplyLambda = {a,b ->
 
+        a * b
+    }
+    fun operateNumbers(a:Int, b:Int, operation:(Int, Int)->Int):Int{
+        val result = operation(a,b)
+        return result
+        println(result)
+    }
+    val addLambda = { a:Int, b:Int ->
+        a + b
+    }
+    operateNumbers(4,2, addLambda)
 }
