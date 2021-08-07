@@ -207,13 +207,16 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
 
         a * b
     }
-    fun operateNumbers(a:Int, b:Int, operation:(Int, Int)->Int):Int{
+    fun operateNumbers(a:Int, b:Int, operation:(Int, Int)->Int,function: (Int,Int)->Int ):Int {
         val result = operation(a,b)
         return result
         println(result)
     }
+    fun addFunction(a:Int, b:Int)= a + b
     val addLambda = { a:Int, b:Int ->
         a + b
     }
-    operateNumbers(4,2, addLambda)
+    operateNumbers(4,2, addLambda, ::addFunction)
+        //passed in a function as the third parameter of OperateNumbers
+
 }
