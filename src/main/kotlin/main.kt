@@ -4,7 +4,7 @@ val names: Array<String> = arrayOf("Jenna", "Jenny", "James", "Lenna")
     println(names[0])
 }*/
 
-fun main(args: Array<String>){
+fun main(args: Array<String>) {
     /*val innerPlannets = listOf("Mercury", "venus", "Mars", "Sartun", "Jupiter")
     //Kotlin has inferred the type of this list to be a string
     val subscribers: List<String> = listOf()
@@ -93,31 +93,33 @@ println(array.joinToString())
         println("${scores + 1 }.$player")
     }*/
 
-var nullableList: List<Int>? = listOf(1,2,3,4)
+    var nullableList: List<Int>? = listOf(1, 2, 3, 4)
     nullableList = null
-    val array4 = arrayOf(1,2,3)
+    val array4 = arrayOf(1, 2, 3)
     println(array4[0])
     array4[0] = 4
     println(array4[0])
-    for((index, array4)in array4.withIndex()){
+    for ((index, array4) in array4.withIndex()) {
         println("${index + 1}.$array4")
     }
-    val array5 = arrayOf(1,2,3)
+    val array5 = arrayOf(1, 2, 3)
     array5[0] = array5[1]
-    for(item in array5){println(item)}
-    var yearOfBirth = mapOf("Anna" to 1990 , "Craig" to 1992, "Donna" to 1994, "Brian" to 1995)
+    for (item in array5) {
+        println(item)
+    }
+    var yearOfBirth = mapOf("Anna" to 1990, "Craig" to 1992, "Donna" to 1994, "Brian" to 1995)
     // mapping player names to scores using mutable maps
-    var namesAndScores = mutableMapOf("Anna" to 10 , "Lena" to 20, "Jenna" to 5, "Maddy" to 6)
+    var namesAndScores = mutableMapOf("Anna" to 10, "Lena" to 20, "Jenna" to 5, "Maddy" to 6)
     println(namesAndScores.get("Anna"))
-   var check =  namesAndScores.isEmpty()
-   var size = namesAndScores.size
-   println(check)
+    var check = namesAndScores.isEmpty()
+    var size = namesAndScores.size
+    println(check)
     println(size)
     val bobData = mutableMapOf(
-        "Name" to "Bob" , "Profession" to "CardPlayer",
+        "Name" to "Bob", "Profession" to "CardPlayer",
         "Country" to "USA"
     )
-    bobData.put("State","Texas")
+    bobData.put("State", "Texas")
     bobData["City"] = "San Francisco"
     bobData.put("Name", "Bobby")
     bobData["Profession"] = "Mailman"
@@ -127,22 +129,22 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     //removing elements
     bobData.remove("City")
     bobData.remove("State", "Texas")
-    for((player,score)in namesAndScores) {
+    for ((player, score) in namesAndScores) {
         println("$player - $score")
     }
-    for (player in namesAndScores.keys){
+    for (player in namesAndScores.keys) {
         print("$player")
         println()
     }
     println("some string".hashCode())
     println(1.hashCode())
     println(false.hashCode())
-        val name = setOf("Anna", "Brian", "Craig", "David", "Anna")
-        println(name)
-    val someArray = arrayOf(1,2,3,4,1)
+    val name = setOf("Anna", "Brian", "Craig", "David", "Anna")
+    println(name)
+    val someArray = arrayOf(1, 2, 3, 4, 1)
     var someSet = mutableSetOf(*someArray)
     println(someSet)
-  println(someSet.contains(1))
+    println(someSet.contains(1))
     println(4 in someSet)
     println(someSet.first())
     println(someSet.last())
@@ -152,9 +154,9 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
 
     println(someSet)
     println(removed)
-    var newArray = arrayOf(4,5,6,7,8)
+    var newArray = arrayOf(4, 5, 6, 7, 8)
     var set = mutableSetOf(*newArray)
-    var addElementToArray  = set.add(9)
+    var addElementToArray = set.add(9)
     val removeElement = set.remove(4)
     println(addElementToArray)
     println(set)
@@ -167,21 +169,22 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     map4["One"]
     map4["Zero"] = 0
     println(map4)
-   val map5 =  mutableMapOf("NY" to "New York" , "CA" to "California")
+    val map5 = mutableMapOf("NY" to "New York", "CA" to "California")
     map5["NY"]
     map5["WA"] = "Washington"
-   // map5["CA"] = null
-    for((states, city) in map5){
+    // map5["CA"] = null
+    for ((states, city) in map5) {
         println("$states $city")
     }
-    fun mergeMaps(map1: Map<String, String>, map2: Map<String, String>): Map<String,String>{
-     val mergedMap: MutableMap<String, String> = mutableMapOf()
-         mergedMap.putAll(map1)
-         mergedMap.putAll(map2)
-         return mergedMap
+    fun mergeMaps(map1: Map<String, String>, map2: Map<String, String>): Map<String, String> {
+        val mergedMap: MutableMap<String, String> = mutableMapOf()
+        mergedMap.putAll(map1)
+        mergedMap.putAll(map2)
+        return mergedMap
 
-     }
-    val firstMap = mapOf("2"  to "4", "2" to "2")
+    }
+
+    val firstMap = mapOf("2" to "4", "2" to "2")
     val secondMap = mapOf("6" to "8", "3" to "3")
     mergeMaps(firstMap, secondMap)
     println("${mergeMaps(firstMap, secondMap)}")
@@ -197,28 +200,29 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     val secondMap = mapOf("1" to "1", "3" to "3")
     println(mergeMaps(firstMap, secondMap))*/
     var multiplyLambda: (Int, Int) -> Int
-    multiplyLambda = {
-            a: Int,b: Int -> Int
+    multiplyLambda = { a: Int, b: Int ->
+        Int
         a * b
     }
-    val lambdaResult = multiplyLambda(4,2)
-  println(lambdaResult)
-    multiplyLambda = {a,b ->
+    val lambdaResult = multiplyLambda(4, 2)
+    println(lambdaResult)
+    multiplyLambda = { a, b ->
 
         a * b
     }
-    fun operateNumbers(a:Int, b:Int, operation:(Int, Int)->Int,function: (Int,Int)->Int ):Int {
-        val result = operation(a,b)
+    fun operateNumbers(a: Int, b: Int, operation: (Int, Int) -> Int, function: (Int, Int) -> Int): Int {
+        val result = operation(a, b)
         return result
         println(result)
     }
-    fun addFunction(a:Int, b:Int)= a + b
-    val addLambda = { a:Int, b:Int ->
+
+    fun addFunction(a: Int, b: Int) = a + b
+    val addLambda = { a: Int, b: Int ->
         a + b
     }
-    operateNumbers(4,2, addLambda, ::addFunction)
-        //passed in a function as the third parameter of OperateNumbers]
-    var unitLambda:() -> Unit ={
+    operateNumbers(4, 2, addLambda, ::addFunction)
+    //passed in a function as the third parameter of OperateNumbers]
+    var unitLambda: () -> Unit = {
         println("Kotline Apprentice is awesome!")
     }
     unitLambda()
@@ -238,15 +242,16 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     println(incrementCounter())
     println(incrementCounter())
     println(incrementCounter())
-    fun countingLambdas(): ()-> Int {
+    fun countingLambdas(): () -> Int {
         var counter = 0
-        var incrementCounter: () -> Int ={
+        var incrementCounter: () -> Int = {
             counter += 1
             counter
         }
         return incrementCounter
         println(incrementCounter())
     }
+
     val counter1 = countingLambdas()
     val counter2 = countingLambdas()
     println(counter1())
@@ -258,69 +263,100 @@ var nullableList: List<Int>? = listOf(1,2,3,4)
     //recap of how an Array is sorted by calling the sorted() to get a sorted version of the array
     val names = arrayOf("ZZZZZZZ", "BBBB", "A", "CCCC", "EEEEE")
     names.sorted() // this will return A, BBB, EEEE, ZZZZZ
-    val namesByLength = names.sortedWith(compareBy{
+    val namesByLength = names.sortedWith(compareBy {
         -it.length
     })
     println(namesByLength)
-    val values = listOf(1,2,3,4,5,6)
+    val values = listOf(1, 2, 3, 4, 5, 6)
     values.forEach {
         println("$it: ${it * it}")
 
     }
-    var prices = listOf(1.5, 10.0, 4.99,2.30,8.19)
-    val largePrices = prices.filter{
+    var prices = listOf(1.5, 10.0, 4.99, 2.30, 8.19)
+    val largePrices = prices.filter {
         it > 5.0
-       // public inline fun <T> Iterable<T>.filter(predicate: (T) -> Boolean): List<T>
+        // public inline fun <T> Iterable<T>.filter(predicate: (T) -> Boolean): List<T>
     }
-    val salesPrices = prices.map{
+    val salesPrices = prices.map {
         it * 0.9
     }
-println(salesPrices)
+    println(salesPrices)
     //map function can also be used to change the type
     val userInput = listOf("0", "11", "haha", "42")
-    val numbers = userInput.map{
+    val numbers = userInput.map {
         it.toIntOrNull()
     }
     println(numbers)
-    val numbers2 = userInput.mapNotNull{
+    val numbers2 = userInput.mapNotNull {
         it.toIntOrNull()
     }
     println(numbers2)
-var sum = prices.fold(0.0){
-    a,b ->
-    a + b
-}
+    var sum = prices.fold(0.0) { a, b ->
+        a + b
+    }
     println(sum)
-    sum = prices.reduce{
-        a,b -> a+b
+    sum = prices.reduce { a, b ->
+        a + b
 
     }
-    val stock = mapOf(1.5 to 5, 10.0 to 2, 4.99 to 20 , 2.30 to 5, 8.19 to 30)
+    val stock = mapOf(1.5 to 5, 10.0 to 2, 4.99 to 20, 2.30 to 5, 8.19 to 30)
     var stockSum = 0.0
     stock.forEach {
         stockSum += it.key * it.value
     }
-println(stockSum)
+    println(stockSum)
     val nameList = listOf("Jenna", "Lena", "Anna", "Maddison")
- nameList.forEach {
-       println("$it: ${it + it}")
-        }
- val  con =  nameList.fold("") {a,b -> a +b}
-  val longNames =  nameList.filter { it.length > 4}.fold("") {
-   a,b ->
-      a+b
-  }
-    val folded =longNames.fold("") {a,b -> a+b}
-println("$con , $longNames,  $folded")
-    val namesAndAges = mapOf("Jenna" to 20, "Lena" to 18,"Anna" to 17, "Niahm" to 15)
+    nameList.forEach {
+        println("$it: ${it + it}")
+    }
+    val con = nameList.fold("") { a, b -> a + b }
+    val longNames = nameList.filter { it.length > 4 }.fold("") { a, b ->
+        a + b
+    }
+    val folded = longNames.fold("") { a, b -> a + b }
+    println("$con , $longNames,  $folded")
+    val namesAndAges = mapOf("Jenna" to 20, "Lena" to 18, "Anna" to 17, "Niahm" to 15)
     val underAge = namesAndAges.filter {
         it.value < 18
     }
     println(underAge)
-    val underAgeNames = namesAndAges.filter{
+    val underAgeNames = namesAndAges.filter {
         it.value < 18
-    }.map{
+    }.map {
         it.key
     }
     println(underAgeNames)
+    fun repeatTask(times: Int, task: () -> Unit) {
+        for (time in 0 until times) {
+            task()
+        }
+        repeatTask(10) {
+            println("Early Riser")
+        }
+    }
+
+    val averageRatingd = mapOf(
+        "Calender Pro" to arrayOf(1, 5, 5, 4, 2, 1, 5, 4),
+        "The Messenger" to arrayOf(5, 4, 2, 5, 4, 1, 1, 2),
+        "Socialise" to arrayOf(2, 1, 2, 2, 1, 2, 1, 4, 2)
+    )
+    val appRatings = mapOf(
+        "Calender Pro" to arrayOf(1, 5, 5, 4, 2, 1, 5, 4),
+        "The Messenger" to arrayOf(5, 4, 2, 5, 4, 1, 1, 2),
+        "Socialise" to arrayOf(2, 1, 2, 2, 1, 2, 4, 2)
+    )
+    val averageRatings = mutableMapOf<String, Double>()
+    appRatings.forEach {
+        val total = it.value.reduce(Int::plus)
+        averageRatings[it.key] = total.toDouble()
+
+    }
+    println(averageRatings)
+    val goodApps = averageRatings.filter {
+        it.value > 3
+
+    }.map {
+        it.key
+    }
+    println(goodApps)
 }
