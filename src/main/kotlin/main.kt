@@ -359,7 +359,7 @@ println(array.joinToString())
         it.key
     }
     println(goodApps)
-    
+
     /*class Person(var firstName: String, var lastName: String){
 
         // val fullName
@@ -367,35 +367,35 @@ println(array.joinToString())
 
 
     }*/
-  //  val Person1 = Person("John", "Doe")
+    //  val Person1 = Person("John", "Doe")
     //val Person2 = Person("Jane", "Doe")
-   /* println(Person1.firstName)
-    println(Person2.lastName)*/
+    /* println(Person1.firstName)
+     println(Person2.lastName)*/
     //val John = Person(firstName ="John",lastName = "McC")
     //println(John.fullName)
-    class  PersonDetails(var height: Int, var  Age: Int, var Nationality: String){
-        val details
-            get() = "My height is: $height  and my Age is: $Age  and I am  a $Nationality"
+    /* class  PersonDetails(var height: Int, var  Age: Int, var Nationality: String){
+         val details
+             get() = "My height is: $height  and my Age is: $Age  and I am  a $Nationality"
 
-    }
-    var john = PersonDetails(190,24, "Belgian")
+     }
+     var john = PersonDetails(190,24, "Belgian")
 
 
-   // var John = Person(firstName ="John",lastName = "McC")
- //   println(John.fullName)
+    // var John = Person(firstName ="John",lastName = "McC")
+  //   println(John.fullName)
 
-    println(john.details)
-    class Person(var firstName: String, var lastName: String){
-        val fullName
-            get() = "$firstName $lastName"
+     println(john.details)
+     class Person(var firstName: String, var lastName: String){
+         val fullName
+             get() = "$firstName $lastName"
 
-    }
+     }
 
-/*    class  PersonDetails(var height: Int, var  Age: Int, var Nationality: String){
+ *//*    class  PersonDetails(var height: Int, var  Age: Int, var Nationality: String){
         val details
             get() = "$height  and $Age  and $Nationality"
 
-    }*/
+    }*//*
  //   var john = PersonDetails(190,24, "Belgian")
 
     var John = Person(firstName ="John",lastName = "McC")
@@ -406,5 +406,69 @@ println(array.joinToString())
     println(john.Nationality)
     println(john.details)
     println(John.firstName)
+    println(homeOwner.firstName)*/
+    class Person(var firstName: String, var lastName: String) {
+        val fullName
+            get() = "$firstName $lastName"
+
+    }
+
+    class PersonDetails(var height: Int, var Age: Int, var Nationality: String) {
+        val details
+            get() = "$height  and $Age  and $Nationality"
+
+    }
+
+    var john = PersonDetails(190, 24, "Belgian")
+
+    var John = Person(firstName = "John", lastName = "McC")
+    var homeOwner = John
+    John.firstName = "john"
+    homeOwner.lastName = "Dennis"
+    println(John.fullName)
+    println(john.Age)
+    println(john.Nationality)
+    println(john.details)
+    println(John.firstName)
     println(homeOwner.firstName)
+    println(homeOwner.fullName)
+    fun memberOf(person: Person, group: Array<Person>): Boolean {
+        return group.contains(person)
+
+    }
+
+    val groupWithJohn = arrayOf(
+        Person("A", "B"),
+        Person("C", "D"),
+        Person("E", "F"),
+        John,
+        Person("G", "H"),
+        Person("I", "J")
+    )
+    val groupWithoutJohn = arrayOf(
+        Person("A", "B"),
+        Person("C", "D"),
+        Person("E", "F"),
+        Person("G", "H"),
+        Person("I", "J")
+    )
+    println(memberOf(John, groupWithJohn))
+    println(memberOf(John, groupWithoutJohn))
+    class Grade(val letter: String, val points: Double, val Credits: Double)
+    class Student(
+        val firstName: String, val lastName: String,
+        val grades: MutableList<Grade> = mutableListOf(),
+        var credits: Double = 0.0
+    ) {
+        fun recordGrade(grade: Grade) {
+            grades.add(grade)
+            credits += grade.Credits
+        }
+
+    }
+    val Jane = Student("Jane", "Doe",)
+    val math = Grade("A", 9.0, 4.0)
+    val history = Grade("A-",8.0, 3.5)
+    Jane.recordGrade(math)
+    Jane.recordGrade(history)
 }
