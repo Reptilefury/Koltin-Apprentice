@@ -54,6 +54,13 @@ fun main(args: Array<String>){
     val lastName: String,
                   val grades: MutableList<Grade> = mutableListOf(),
                   var credits: Double = 0.0){
+        val gpa: Double get(){
+            var totalPoints = 0.0
+            grades.forEach{
+                totalPoints += it.points
+            }
+            return totalPoints/credits
+        }
         fun recordeGrade(grade:Grade){
             grades.add(grade)
             credits += grade.credits
@@ -66,6 +73,6 @@ fun main(args: Array<String>){
     jane.recordeGrade(history)
     jane.recordeGrade(math)
 
-
+println(jane.gpa)
 }
 

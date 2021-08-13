@@ -459,7 +459,15 @@ println(array.joinToString())
         val firstName: String, val lastName: String,
         val grades: MutableList<Grade> = mutableListOf(),
         var credits: Double = 0.0
+
     ) {
+        val gpa: Double get(){
+            var totalPoints = 0.0
+            grades.forEach {
+                totalPoints += it.points
+            }
+            return totalPoints/credits
+        }
         fun recordGrade(grade: Grade) {
             grades.add(grade)
             credits += grade.Credits
@@ -471,4 +479,6 @@ println(array.joinToString())
     val history = Grade("A-",8.0, 3.5)
     Jane.recordGrade(math)
     Jane.recordGrade(history)
+
+    println(Jane.gpa)
 }
