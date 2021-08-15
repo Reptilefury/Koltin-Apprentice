@@ -481,4 +481,58 @@ println(array.joinToString())
     Jane.recordGrade(history)
 
     println(Jane.gpa)
+    class Student1(var firstName: String, var lastName: String, var id: Int) {
+
+        override fun hashCode(): Int {
+            val prime = 31
+            var result = 1
+
+            result = prime * result + firstName.hashCode()
+            result = prime * result + id
+            result = prime * result + lastName.hashCode()
+
+            return result
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other)
+                return true
+
+            if (other == null)
+                return false
+
+            if (javaClass != other.javaClass)
+                return false
+
+            val obj = other as Student1?
+
+            if (firstName != obj?.firstName)
+                return false
+
+            if (id != obj.id)
+                return false
+
+            if (lastName != obj.lastName)
+                return false
+
+            return true
+        }
+
+        override fun toString(): String {
+            return "Student1 (firstName=$firstName, lastName=$lastName, id=$id)"
+        }
+
+        fun copy(firstName: String = this.firstName,
+                 lastName: String = this.lastName,
+                 id: Int = this.id)
+                = Student1(firstName, lastName, id)
+    }
+    val albert = Student1(firstName = "Albert", lastName = "Einstein", id = 1)
+    val richard = Student1(firstName  = "Richard", lastName = "Feyman", id = 2)
+    val albertCopy = albert.copy()
+    println(albert)
+    println(richard)
+    println(albert == richard)
+    println(albert == albertCopy)
+    println(albert === albertCopy)
 }
