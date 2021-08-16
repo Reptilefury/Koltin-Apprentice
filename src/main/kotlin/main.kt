@@ -407,6 +407,8 @@ println(array.joinToString())
     println(john.details)
     println(John.firstName)
     println(homeOwner.firstName)*/
+    /*classes
+    * */
     class Person(var firstName: String, var lastName: String) {
         val fullName
             get() = "$firstName $lastName"
@@ -535,4 +537,17 @@ println(array.joinToString())
     println(albert == richard)
     println(albert == albertCopy)
     println(albert === albertCopy)
+    data class  StudentData(var firstName: String, var lastName : String, var id: Int)
+    val marie = StudentData("Marie", "Curie", 1)
+    val emmy = StudentData("Emmy", "Noether", 2)
+    val marieCopy = marie.copy()
+    println(marie)
+    println(emmy)
+    println(marie == emmy)
+    println(marie == marieCopy)
+    println(marie === marieCopy)
+    val (firstName, lastName, id) = marie
+    println(firstName)
+    println(lastName)
+    println(id)
 }
