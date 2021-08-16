@@ -14,6 +14,20 @@ fun main(args: Array<String>){
     println(lastName)
     println(id)
 
-    class User(val firstName: String, var lastName: String)
-    class  MovieList(var title: String, var description: String)
+  //  class User(val firstName: String, var lastName: String)
+    //class  MovieList(var title: String, var description: String)
+    class MovieList(val name: String, val movies: MutableList<String> = mutableListOf()){
+        fun print(){
+            println("Movie List: $name")
+            movies.forEach{
+                println(it)
+            }
+        }
+    }
+    class User(val lists: MutableMap<String, MovieList> = mutableMapOf<String, MovieList>()){
+        fun addList(list: MovieList){
+            lists[list.name] = list
+        }
+        fun list(name: String): MovieList? = lists[name]
+    }
 }
