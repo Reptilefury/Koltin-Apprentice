@@ -3,6 +3,7 @@ package `Chapter 11 classes`
 import java.security.interfaces.DSAPublicKey
 
 fun main(args: Array<String>) {
+
     class Person(var firstName: String, var lastName: String) {
         val fullName
             get() = "$firstName $lastName"
@@ -121,6 +122,7 @@ fun main(args: Array<String>) {
         override fun toString(): String {
             return "Student1 (firstName=$firstName, lastName=$lastName, id=$id)"
         }
+
 
         fun copy(firstName: String = this.firstName,
                  lastName: String = this.lastName,

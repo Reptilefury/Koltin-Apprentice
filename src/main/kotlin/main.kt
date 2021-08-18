@@ -550,4 +550,18 @@ println(array.joinToString())
     println(firstName)
     println(lastName)
     println(id)
+    class MovieList(val name: String, val movies: MutableList<String> = mutableListOf()){
+        fun print(){
+            println("Movie List: $name")
+            movies.forEach{
+                println(it)
+            }
+        }
+    }
+    class User(val lists: MutableMap<String, MovieList> = mutableMapOf<String, MovieList>()){
+        fun addList(list: MovieList){
+            lists[list.name] = list
+        }
+        fun list(name: String): MovieList? = lists[name]
+    }
 }
