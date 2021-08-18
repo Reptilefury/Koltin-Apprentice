@@ -1,5 +1,7 @@
 package Objects
 import Objects.StudentRegistry
+import `Chapter 11 classes`.Scientist
+
 object x {
     var x = 0
 
@@ -20,6 +22,7 @@ val richard = Student(3, "Richard", "Feyman")
 fun main(args: Array<String>){
     println(add())
     return add()
+
 }
 /*
 object StudentRegistry{
