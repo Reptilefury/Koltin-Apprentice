@@ -1,5 +1,8 @@
 package `Chapter 11 classes`
 
+import Objects.Counts
+import Objects.ScientistRepository
+import Objects.StudentRegistry
 import java.security.interfaces.DSAPublicKey
 
 fun main(args: Array<String>) {
@@ -129,6 +132,8 @@ fun main(args: Array<String>) {
                  id: Int = this.id)
                 = Student1(firstName, lastName, id)
     }
+
+
 }
 
 

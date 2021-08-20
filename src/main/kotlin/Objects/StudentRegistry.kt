@@ -13,4 +13,7 @@ object StudentRegistry {
             println(it.fullName)
         }
     }
+    fun main(args: Array<String>){
+
+    }
 }
