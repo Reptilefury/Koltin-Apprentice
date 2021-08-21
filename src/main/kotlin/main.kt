@@ -1,3 +1,7 @@
+import Objects.FS
+import Objects.Fat32
+import Objects.memoryFileSystem
+
 /*fun main(args:Array<String>){
 
 val names: Array<String> = arrayOf("Jenna", "Jenny", "James", "Lenna")
@@ -564,4 +568,11 @@ println(array.joinToString())
         }
         fun list(name: String): MovieList? = lists[name]
     }
+    fun getFilesystem(): FS{
+        return memoryFileSystem(listOf("Path to file:/C/programFiles86", "MyStuff/Apps/Compressed"),"Anna Contents")
+    }
+    val fileSystem: FS = getFilesystem()
+    fileSystem.readDir()
+
+
 }
