@@ -1,5 +1,6 @@
 package `Chapter 13 Properties`
 
+import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
 class Student {
@@ -29,4 +30,33 @@ class NameDelegate {
         return formattedValue
 
     }
+}
+class DelegatedLevel(val id: Int, var boss: String) {
+    companion object {
+        var highestLevel = 1
+    }
+    var unlocked: Boolean by Delegates.observable(false) {
+            _, old, new ->
+        if (new && id > highestLevel) {
+            highestLevel = id
+        }
+        println("$old -> $new")
+    }
+     val  delegatedLevel1 = DelegatedLevel(id = 1 , boss = "Squid")
+     val delegatedLevel2 = DelegatedLevel(id = 1, boss = "Chameleon")
+
+}
+fun main(arg: Array<String>){
+
+
+    val  delegatedLevel1 = DelegatedLevel(id = 1 , boss = "Squid")
+    val delegatedLevel2 = DelegatedLevel(id = 1, boss = "Chameleon")
+    println(DelegatedLevel.highestLevel)
+    delegatedLevel2.unlocked = true
+    println(DelegatedLevel.highestLevel)
+     delegatedLevel1.unlocked = true
+    println(DelegatedLevel.highestLevel)
+
+
+
 }
