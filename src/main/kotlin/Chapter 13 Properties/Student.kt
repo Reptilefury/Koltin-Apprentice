@@ -31,6 +31,7 @@ class NameDelegate {
 
     }
 }
+/*
 class DelegatedLevel(val id: Int, var boss: String) {
     companion object {
         var highestLevel = 1
@@ -59,4 +60,54 @@ fun main(arg: Array<String>){
 
 
 
+}*/
+
+class  DelegatedLevel(val id: Int, var boss: String){
+    companion object{
+        var highestLevel = 1
+    }
+    var unlocked: Boolean by Delegates.observable(false){property, oldLevel, newLevel ->
+    if (newLevel && id > highestLevel)
+        highestLevel  = id
+        println("$oldLevel -> $newLevel")
+
+
+    }
+
+
 }
+
+fun  main(arg: Array<String>){
+     var  checkLevel = DelegatedLevel
+    checkLevel.highestLevel = 2
+    println(checkLevel.highestLevel)
+
+    checkLevel.highestLevel = 3
+    println(checkLevel.highestLevel)
+
+    checkLevel.highestLevel = 4
+    println(checkLevel.highestLevel)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
