@@ -77,7 +77,13 @@ class  DelegatedLevel(val id: Int, var boss: String){
 
 }
 
+val delegatedLevel1 = DelegatedLevel(id = 1, boss = "Chameleon")
+val delegatedLevel2 = DelegatedLevel(id = 2 , boss = "Squid")
+
 fun  main(arg: Array<String>){
+    println(DelegatedLevel.highestLevel)
+    delegatedLevel2.unlocked = true
+    println(DelegatedLevel.highestLevel)
      var  checkLevel = DelegatedLevel
     checkLevel.highestLevel = 2
     println(checkLevel.highestLevel)

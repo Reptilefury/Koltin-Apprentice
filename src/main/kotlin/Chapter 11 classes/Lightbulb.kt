@@ -77,6 +77,11 @@ class Boot{
     val Bootable by lazy { LinuxBoot() }
 }
  fun main() {
+     val light = Lightbulb()
+     light.current = 50
+     var current = light.current
+     light.current = 40
+     current = light.current
      var bootable = Boot()
      bootable.Bootable
      //println(bootable.Bootable)
