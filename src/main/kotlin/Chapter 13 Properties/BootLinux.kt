@@ -80,5 +80,7 @@ fun main(array: Array<String>) {
 }
 
 
-
+//observables are used to observe changes in a variable
+// lazy is enables a class to be instantiated only when it is needed
+//vetoables observes changes in a variable but only with a condition added to it that it will make changes
 
