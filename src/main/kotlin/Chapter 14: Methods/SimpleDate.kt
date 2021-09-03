@@ -1,15 +1,12 @@
 package `Chapter 14 Methods`
 
-import sun.jvm.hotspot.oops.CellTypeState.value
-import java.lang.reflect.Array.set
-import javax.swing.UIManager.get
 
 fun main(){
-    var numbers = arrayListOf(1, 2,3,4)
+    val numbers = arrayListOf(1, 2,3,4)
    // numbers.removeAt(3)
     numbers.removeAt(numbers.lastIndex)
     println(numbers)
- var months = arrayOf("January","Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+ val months = arrayOf("January","Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
     class simplerDate1(var month: String)
 
 
