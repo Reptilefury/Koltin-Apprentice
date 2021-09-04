@@ -16,6 +16,8 @@ fun main(){
     val date3 = simpleDate3("November")
     date3.monthsUntilWinter()
     println(date3.monthsUntilWinter())
+    val date4 = simpleDate4("June")
+   // date4.month
    // println(getter)
 
 }
@@ -49,5 +51,23 @@ class simpleDate4(var month: String){
         get() = monthsUntilWinter()
     set(value){
         field = value
+    }
+}
+fun simpleDate4.monthsUntilSummerBreak(): Int {
+    val monthIndex = months.indexOf(month)
+    return if (monthIndex in 0..months.indexOf("June")) {
+        months.indexOf("June") - months.indexOf(month)
+    } else if (monthIndex in months.indexOf("June")..months.indexOf("August")) {
+        0
+    } else {
+        months.indexOf("June") + (12 - months.indexOf(month))
+    }
+}
+fun simpleDate3.monthsUntilSummerBreak(): Int {
+      val monthIndex= months.indexOf(month)
+    return if(monthIndex in 0..months.indexOf("June")..months.indexOf("August")){
+        0
+    }else {
+        months.indexOf("June")+ (12 - months.indexOf(month))
     }
 }
