@@ -63,11 +63,11 @@ fun simpleDate4.monthsUntilSummerBreak(): Int {
         months.indexOf("June") + (12 - months.indexOf(month))
     }
 }
-fun simpleDate3.monthsUntilSummerBreak(): Int {
-      val monthIndex= months.indexOf(month)
-    return if(monthIndex in 0..months.indexOf("June")..months.indexOf("August")){
-        0
-    }else {
-        months.indexOf("June")+ (12 - months.indexOf(month))
-    }
-}
+//fun simpleDate3.monthsUntilSummerBreak(): Int {
+   //  val monthIndex= months.indexOf(month)
+    //return if(monthIndex in 0..months.indexOf("June")months.indexOf("August")){
+   //     0
+    //}else {
+     //   months.indexOf("June")+ (12 - months.indexOf(month))
+   // }
+//}
