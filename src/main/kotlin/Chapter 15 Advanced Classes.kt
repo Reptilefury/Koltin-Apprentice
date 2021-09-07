@@ -16,34 +16,97 @@ class Student(firstName: String,lastName: String, val  grades:MutableList<Grade>
 // - A Kotlin class can only inherit from a class that is open(Open is a keyword that is used to show a class can be inherited from)
 // There is no limit for subclassing , meaning you can sub class from a class that is also a subclass.
 open class Grade(var points: Int, var letter: String, var credit: Int)
-open class Person(var firstName: String, var lastName: String){
+open class Person(var firstName: String, var lastName: String) {
     fun fullName() = "$firstName, $lastName"
 }
-open class Student(firstName: String, lastName: String,var grades: MutableList<Grade> = mutableListOf<Grade>()):Person(firstName,lastName){
-    fun recordGrade(grade: Grade){
+
+open class Student(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()) :
+    Person(firstName, lastName) {
+    fun recordGrade(grade: Grade) {
         grades.add(grade)
     }
 }
+
 val John = Student("John", "Doe")
 val Jane = Person("Jane", "Doe")
 val Math = Grade(9, "B", 3)
-fun main(){
-   var printJohn =  John.fullName()
-    var printJane =  Jane.fullName()
+/*fun main() {
+    var printJohn = John.fullName()
+    var printJane = Jane.fullName()
     println("$printJohn")
     println("$printJane")
     John.recordGrade(Math)
 
-}
-open class Students(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()): Person(firstName, lastName){
-    open  fun recordGrade(grade: Grade){
+}*/
+
+/*open class Students(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()) :
+    Person(firstName, lastName) {
+    open fun recordGrade(grade: Grade) {
         grades.add(grade)
     }
 }
-open class BandMember(firstName: String, lastName: String): Students(firstName, lastName){
- open   val minPracticeTime: Int
-    get() {
-        return 2
-    }
+
+open class BandMember(firstName: String, lastName: String) : Students(firstName, lastName) {
+    open val minPracticeTime: Int
+        get() {
+            return 2
+        }
 }
+
+class OboePlayer(firstName: String, lastName: String) : BandMember(firstName, lastName) {
+    override val minPracticeTime: Int = super.minPracticeTime * 2
+}*/
 // REPEAT THISSSSSSS
+open class Students(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()) :
+    Person(firstName, lastName) {
+    open fun recordGrade(grade: Grade) {
+        grades.add(grade)
+    }
+
+    open class BandMember(firstName: String, lastName: String) : Student(firstName, lastName) {
+        open val minPracticeTime: Int
+            get() {
+                return 2
+            }
+
+        class OboePlayer(firstName: String, lastName: String) : BandMember(firstName, lastName) {
+            override val minPracticeTime = super.minPracticeTime * 2
+        }
+    }
+
+    open class SuperComputer(var RAM: String, var CPU: String, var GPU: String)
+
+    open class Dell(
+        RAM: String,
+        CPU: String,
+        GPU: String,
+        var totalSpecs: MutableList<SuperComputer> = mutableListOf<SuperComputer>()
+    ) : SuperComputer(RAM, CPU, GPU) {
+        open fun recordSpecs(specs:SuperComputer){
+            totalSpecs.add(specs)
+        }
+
+    }
+    open class HP(RAM: String, CPU: String, GPU: String, var HPspecs: MutableList<SuperComputer> = mutableListOf<SuperComputer>()): Dell(RAM, CPU, GPU){
+        override fun recordSpecs(HPspecs:SuperComputer){
+            totalSpecs.add(HPspecs)
+        }
+        class MacbookPro(RAM: String, CPU: String, GPU: String):HP(RAM, CPU, GPU,){
+
+        }
+    }
+    }
+open class Animal(var name: String){
+    var children: MutableList<Animal> = mutableListOf<Animal>()
+}
+class Cat(name: String): Animal(name)
+fun main(){
+    val animal = Animal("Teddy Bear")
+    val child = Animal("Teddy")
+    animal.children.add(child)
+    val cat = Cat("Cat")
+    cat.children.add(Cat("Baby Cat"))
+
+// PICK UP FROM HERE https://youtu.be/9PgHerHFH-A
+
+}
