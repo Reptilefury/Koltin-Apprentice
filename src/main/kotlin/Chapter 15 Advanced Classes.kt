@@ -100,13 +100,25 @@ open class Animal(var name: String){
     var children: MutableList<Animal> = mutableListOf<Animal>()
 }
 class Cat(name: String): Animal(name)
+fun phoneBookName(person:Person): String {
+    return "${person.firstName} ${person.lastName}"
+}
+val person = Person("John","Doe")
+val oboePlayer = Person("Jane", "Doe")
+val HallMornitor = Student("Jim","Rohn")
+
 fun main(){
     val animal = Animal("Teddy Bear")
     val child = Animal("Teddy")
     animal.children.add(child)
     val cat = Cat("Cat")
     cat.children.add(Cat("Baby Cat"))
-
+    println(HallMornitor is Students.BandMember.OboePlayer)
+    println(HallMornitor !is Students.BandMember.OboePlayer)
+    println(HallMornitor is Person)
+   // (Students.BandMember.OboePlayer  as Student).minimumPracticeTime
+    (HallMornitor as Students.BandMember)
 // PICK UP FROM HERE https://youtu.be/9PgHerHFH-A
 
 }
+//Polymorphism
