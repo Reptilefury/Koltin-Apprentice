@@ -99,15 +99,43 @@ open class Students(firstName: String, lastName: String, var grades: MutableList
 open class Animal(var name: String){
     var children: MutableList<Animal> = mutableListOf<Animal>()
 }
-class Cat(name: String): Animal(name)
+
+class Cat(name: String) : Animal(name)
+
+/*
 fun phoneBookName(person:Person): String {
     return "${person.firstName} ${person.lastName}"
 }
 val person = Person("John","Doe")
 val oboePlayer = Person("Jane", "Doe")
 val HallMornitor = Student("Jim","Rohn")
+*/
+fun phoneBookName(person: Person): String {
+    return "${person.firstName}, ${person.lastName}"
+}
 
-fun main(){
+val person = Person("John", "Doe")
+val OboePlayer = Person("Jane", "Doe")
+val HallMornitor = Person("James", "Doe")
+fun AfterClassActivity(student: Student): String {
+    return "Goes home"
+}
+
+fun AfterClassActivity(student: Students.BandMember): String {
+    return "Goes to practice"
+}
+class StudentAthlete(firstName: String, lastName: String): Student(firstName, lastName){
+    val failedClasses: MutableList<Grade> = mutableListOf<Grade>()
+  override fun recordGrade(grade:Grade){
+      super.recordGrade(grade)
+     if(grade.letter == 'F'){
+       failedClasses.add(Grade)
+     }
+  }
+
+}
+
+fun main() {
     val animal = Animal("Teddy Bear")
     val child = Animal("Teddy")
     animal.children.add(child)
@@ -117,7 +145,9 @@ fun main(){
     println(HallMornitor !is Students.BandMember.OboePlayer)
     println(HallMornitor is Person)
    // (Students.BandMember.OboePlayer  as Student).minimumPracticeTime
-    (HallMornitor as Students.BandMember)
+    (HallMornitor as? Students.BandMember)?.minPracticeTime
+    //AfterClassActivity(Students.BandMember.oboePlayer)
+   // AfterClassActivity(oboePlayer as Students)
 // PICK UP FROM HERE https://youtu.be/9PgHerHFH-A
 
 }
