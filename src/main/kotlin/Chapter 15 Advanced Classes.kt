@@ -101,6 +101,27 @@ open class Animal(var name: String){
 }
 
 class Cat(name: String) : Animal(name)
+class StudentAthlete(firstName: String, lastName: String) : Students(firstName, lastName) {
+   var failedClasses = mutableListOf<Grade>()
+    override fun recordGrade(grade: Grade){
+        val newFailedClasses = mutableListOf<Grade>()
+        for(grade in grades){
+            if(grade.letter == "F" ){
+                newFailedClasses.add(grade)
+            }
+
+        }
+        failedClasses = newFailedClasses
+       // failedClasses.add(grade)
+        super.recordGrade(grade)
+    }
+    val isEligible: Boolean
+        get() = failedClasses.size > 3
+   
+// REPEAT THIS BLOCK OF CODE
+
+
+}
 
 /*
 fun phoneBookName(person:Person): String {
@@ -124,16 +145,6 @@ fun AfterClassActivity(student: Student): String {
 fun AfterClassActivity(student: Students.BandMember): String {
     return "Goes to practice"
 }
-class StudentAthlete(firstName: String, lastName: String): Student(firstName, lastName){
-    val failedClasses: MutableList<Grade> = mutableListOf<Grade>()
-  override fun recordGrade(grade:Grade){
-      super.recordGrade(grade)
-     if(grade.letter == 'F'){
-       failedClasses.add(Grade)
-     }
-  }
-
-}
 
 fun main() {
     val animal = Animal("Teddy Bear")
@@ -141,11 +152,20 @@ fun main() {
     animal.children.add(child)
     val cat = Cat("Cat")
     cat.children.add(Cat("Baby Cat"))
-    println(HallMornitor is Students.BandMember.OboePlayer)
-    println(HallMornitor !is Students.BandMember.OboePlayer)
-    println(HallMornitor is Person)
+   // println(HallMornitor is Students.BandMember.OboePlayer)
+   // println(HallMornitor !is Students.BandMember.OboePlayer)
+ //   println(HallMornitor is Person)
    // (Students.BandMember.OboePlayer  as Student).minimumPracticeTime
-    (HallMornitor as? Students.BandMember)?.minPracticeTime
+ //   (HallMornitor as? Students.BandMember)?.minPracticeTime
+    val John = StudentAthlete("John", "Doe")
+    val math = Grade(9, "B", 3)
+    val physics = Grade(9, "F", 3)
+    val chemistry = Grade(9, "F", 3)
+    John.recordGrade(math)
+    John.recordGrade(physics)
+    println(John.isEligible)
+    John.recordGrade(chemistry)
+    println(John.isEligible)
     //AfterClassActivity(Students.BandMember.oboePlayer)
    // AfterClassActivity(oboePlayer as Students)
 // PICK UP FROM HERE https://youtu.be/9PgHerHFH-A
