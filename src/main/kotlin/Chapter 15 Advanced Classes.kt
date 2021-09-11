@@ -103,23 +103,22 @@ open class Animal(var name: String){
 class Cat(name: String) : Animal(name)
 class StudentAthlete(firstName: String, lastName: String) : Students(firstName, lastName) {
    var failedClasses = mutableListOf<Grade>()
-    override fun recordGrade(grade: Grade){
-        val newFailedClasses = mutableListOf<Grade>()
-        for(grade in grades){
-            if(grade.letter == "F" ){
-                newFailedClasses.add(grade)
-            }
-
+override fun recordGrade(grade: Grade){
+    var newFailedClasses = mutableListOf<Grade>()
+    for(grade in grades){
+        if(grade.letter == "F"){
+            newFailedClasses.add(grade)
         }
-        failedClasses = newFailedClasses
-       // failedClasses.add(grade)
-        super.recordGrade(grade)
     }
+    newFailedClasses = failedClasses
+   super.recordGrade(grade)
+}
     val isEligible: Boolean
         get() = failedClasses.size > 3
    
 // REPEAT THIS BLOCK OF CODE
-
+    // If you don't indicate that the class or method is open for inheritance then by default the class or method/function is final
+    //
 
 }
 
@@ -172,3 +171,6 @@ fun main() {
 
 }
 //Polymorphism
+//val range: IntRange = 0.rangeTo(1000)
+
+val Range: IntRange = 0..1000
