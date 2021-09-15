@@ -1,16 +1,16 @@
 package Objects
 
 sealed class Shape{
-    class Circle(val radius: Int) : Shape()
-    class Square(val sideLength: Int) : Shape()
+    class Circle(val radius: Int):Shape()
+    class Square(val sideLength:Int):Shape()
 
-    val Circle1 = Circle(4)
-    val Circle2 = Circle(6)
-    val Square1 = Square(8)
-    val Square2 = Square(6)
+    val circle1 = Circle(6)
+    val circle2 = Circle(4)
+    val Square1 = Square(5)
+    val Square2 = Square(5)
 
-    fun Size(shape: Shape) {
-        when (shape) {
+    fun size(shape:Shape){
+        when (shape){
             is Shape.Circle -> shape.radius
             is Shape.Square -> shape.sideLength
         }
@@ -21,6 +21,18 @@ sealed class Shape1{
     data class Circle(val radius: Int):Shape1()
     data class Rectangle(val width: Int, val height:Int):Shape1()
 
+}
+
+sealed class Data{
+    class Error(val error:String):Data()
+    class Success(val success: String): Data()
+     object Loading
+   // class Loading(val loading: String):Data()
+
+}
+fun getData():Data{
+
+    return Data.Success((100..1000).random().toString())
 }
 fun main(){
      fun AreaOf(shape: Shape1):Number = when (shape){
