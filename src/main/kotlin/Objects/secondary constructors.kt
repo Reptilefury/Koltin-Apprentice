@@ -23,7 +23,7 @@ open class shape {
 class car(val CarName: String){
     class CarEngine(val EngineName:String){
         override fun toString():String {
-      //  return "$CarName, $EngineName"
+       return " $EngineName"
         }
     }
 }
@@ -38,6 +38,24 @@ val mazda = Car("Mazda")
 val MazdaEngine = car.CarEngine("V8")
 fun main(){
     println(MazdaEngine)
+}
+
+/*data class Priviledge(val id: Int, val name: String)
+open class user(val userName: String, private val id: String, protected var age: Int)
+class PrivildgeUser(username: String, id: String, age: Int):user(username, id, age){
+    private val priviledges = mutableListOf<Priviledge>()
+    fun addPriviledge(priviledge: Priviledge){
+        priviledges.add(priviledge)
+    }
+
+}*/
+data class priviledge(val id: Int, val name: String)
+open class User(val userName: String, private val id :Int, protected val age: Int)
+class PrivildgeUser(username: String, id: Int, age: Int):User(username, id, age){
+    private val addPriviledges =  mutableListOf<priviledge>()
+    fun addPriviledge(Priviledge: priviledge){
+        addPriviledges.add(Priviledge)
+    }
 }
 //val mazdaEngine = Car.CarEngine("V8")
 //Visibility Modifiers Public, private, internal and protected
