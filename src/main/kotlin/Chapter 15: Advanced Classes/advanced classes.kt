@@ -1,3 +1,5 @@
+package `Chapter 15 Advanced Classes`
+
 /*class Grade(var letter:String, var credit: Int, var Points: Int)
 open class Person(var firstName: String , var lastName: String){
     open fun fullName() = "$firstName, $lastName"
@@ -95,27 +97,27 @@ open class Students(firstName: String, lastName: String, var grades: MutableList
 
         }
     }
-    }
+}
 open class Animal(var name: String){
     var children: MutableList<Animal> = mutableListOf<Animal>()
 }
 
 class Cat(name: String) : Animal(name)
 class StudentAthlete(firstName: String, lastName: String) : Students(firstName, lastName) {
-   var failedClasses = mutableListOf<Grade>()
-override fun recordGrade(grade: Grade){
-    var newFailedClasses = mutableListOf<Grade>()
-    for(grade in grades){
-        if(grade.letter == "F"){
-            newFailedClasses.add(grade)
+    var failedClasses = mutableListOf<Grade>()
+    override fun recordGrade(grade: Grade){
+        var newFailedClasses = mutableListOf<Grade>()
+        for(grade in grades){
+            if(grade.letter == "F"){
+                newFailedClasses.add(grade)
+            }
         }
+        newFailedClasses = failedClasses
+        super.recordGrade(grade)
     }
-    newFailedClasses = failedClasses
-   super.recordGrade(grade)
-}
     val isEligible: Boolean
         get() = failedClasses.size > 3
-   
+
 // REPEAT THIS BLOCK OF CODE
     // If you don't indicate that the class or method is open for inheritance then by default the class or method/function is final
     //
@@ -151,11 +153,11 @@ fun main() {
     animal.children.add(child)
     val cat = Cat("Cat")
     cat.children.add(Cat("Baby Cat"))
-   // println(HallMornitor is Students.BandMember.OboePlayer)
-   // println(HallMornitor !is Students.BandMember.OboePlayer)
- //   println(HallMornitor is Person)
-   // (Students.BandMember.OboePlayer  as Student).minimumPracticeTime
- //   (HallMornitor as? Students.BandMember)?.minPracticeTime
+    // println(HallMornitor is Students.BandMember.OboePlayer)
+    // println(HallMornitor !is Students.BandMember.OboePlayer)
+    //   println(HallMornitor is Person)
+    // (Students.BandMember.OboePlayer  as Student).minimumPracticeTime
+    //   (HallMornitor as? Students.BandMember)?.minPracticeTime
     val John = StudentAthlete("John", "Doe")
     val math = Grade(9, "B", 3)
     val physics = Grade(9, "F", 3)
@@ -166,7 +168,7 @@ fun main() {
     John.recordGrade(chemistry)
     println(John.isEligible)
     //AfterClassActivity(Students.BandMember.oboePlayer)
-   // AfterClassActivity(oboePlayer as Students)
+    // AfterClassActivity(oboePlayer as Students)
 // PICK UP FROM HERE https://youtu.be/9PgHerHFH-A
 
 }

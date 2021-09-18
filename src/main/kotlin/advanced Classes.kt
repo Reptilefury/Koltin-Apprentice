@@ -1,0 +1,196 @@
+/*class Grade(var letter:String, var credit: Int, var Points: Int)
+open class Person(var firstName: String , var lastName: String){
+    open fun fullName() = "$firstName, $lastName"
+}
+
+class Student(firstName: String,lastName: String, val  grades:MutableList<Grade> = mutableListOf<Grade>()): Person(firstName, lastName){
+     open fun recordGrade(grade: Grade) {
+        grades.add(grade)
+    }
+}*/
+
+//in Kotlin a class that inherits from another class is known as subclass or a derived class ,  and the class that gets inherited from is known as a superclass or
+// a base class
+//The rule for kotlin class inheritance include:
+//- Single inheritance whereby a class can only inherit from one other class
+// - A Kotlin class can only inherit from a class that is open(Open is a keyword that is used to show a class can be inherited from)
+// There is no limit for subclassing , meaning you can sub class from a class that is also a subclass.
+open class Grade(var points: Int, var letter: String, var credit: Int)
+open class Person(var firstName: String, var lastName: String) {
+    fun fullName() = "$firstName, $lastName"
+}
+//visibility modifiers: Public can be accessed everywhere, private can only be accessed within the class, protected can only be accessed within subclasses and finally Internal can only be accessed within the module
+
+
+open class Student(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()) :
+    Person(firstName, lastName) {
+    fun recordGrade(grade: Grade) {
+        grades.add(grade)
+    }
+
+
+
+val John = Student("John", "Doe")
+val Jane = Person("Jane", "Doe")
+val Math = Grade(9, "B", 3)
+/*fun main() {
+    var printJohn = John.fullName()
+    var printJane = Jane.fullName()
+    println("$printJohn")
+    println("$printJane")
+    John.recordGrade(Math)
+
+}*/
+
+/*open class Students(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()) :
+    Person(firstName, lastName) {
+    open fun recordGrade(grade: Grade) {
+        grades.add(grade)
+    }
+}
+
+open class BandMember(firstName: String, lastName: String) : Students(firstName, lastName) {
+    open val minPracticeTime: Int
+        get() {
+            return 2
+        }
+}
+
+class OboePlayer(firstName: String, lastName: String) : BandMember(firstName, lastName) {
+    override val minPracticeTime: Int = super.minPracticeTime * 2
+}*/
+// REPEAT THISSSSSSS
+open class Students(firstName: String, lastName: String, var grades: MutableList<Grade> = mutableListOf<Grade>()) :
+    Person(firstName, lastName) {
+    open fun recordGrade(grade: Grade) {
+        grades.add(grade)
+    }
+
+    open class BandMember(firstName: String, lastName: String) : Student(firstName, lastName) {
+        open val minPracticeTime: Int
+            get() {
+                return 2
+            }
+
+        class OboePlayer(firstName: String, lastName: String) : BandMember(firstName, lastName) {
+            override val minPracticeTime = super.minPracticeTime * 2
+        }
+    }
+
+    open class SuperComputer(var RAM: String, var CPU: String, var GPU: String)
+
+    open class Dell(
+        RAM: String,
+        CPU: String,
+        GPU: String,
+        var totalSpecs: MutableList<SuperComputer> = mutableListOf<SuperComputer>()
+    ) : SuperComputer(RAM, CPU, GPU) {
+        open fun recordSpecs(specs: SuperComputer) {
+            totalSpecs.add(specs)
+        }
+
+    }
+
+    open class HP(
+        RAM: String,
+        CPU: String,
+        GPU: String,
+        var HPspecs: MutableList<SuperComputer> = mutableListOf<SuperComputer>()
+    ) : Dell(RAM, CPU, GPU) {
+        override fun recordSpecs(HPspecs: SuperComputer) {
+            totalSpecs.add(HPspecs)
+        }
+
+        class MacbookPro(RAM: String, CPU: String, GPU: String) : HP(RAM, CPU, GPU) {
+
+        }
+    }
+}
+
+open class Animal(var name: String) {
+    var children: MutableList<Animal> = mutableListOf<Animal>()
+}
+
+class Cat(name: String) : Animal(name)
+class StudentAthlete(firstName: String, lastName: String) : Students(firstName, lastName) {
+    var failedClasses = mutableListOf<Grade>()
+    override fun recordGrade(grade: Grade) {
+        var newFailedClasses = mutableListOf<Grade>()
+        for (grade in grades) {
+            if (grade.letter == "F") {
+                newFailedClasses.add(grade)
+            }
+        }
+        newFailedClasses = failedClasses
+        super.recordGrade(grade)
+    }
+
+    val isEligible: Boolean
+        get() = failedClasses.size > 3
+
+// REPEAT THIS BLOCK OF CODE
+    // If you don't indicate that the class or method is open for inheritance then by default the class or method/function is final
+    //
+
+}
+
+/*
+fun phoneBookName(person:Person): String {
+    return "${person.firstName} ${person.lastName}"
+}
+val person = Person("John","Doe")
+val oboePlayer = Person("Jane", "Doe")
+val HallMornitor = Student("Jim","Rohn")
+*/
+fun phoneBookName(person: Person): String {
+    return "${person.firstName}, ${person.lastName}"
+}
+
+val person = Person("John", "Doe")
+//val OboePlayer = Person("Jane", "Doe")
+val HallMornitor = Person("James", "Doe")
+fun AfterClassActivity(student: Student): String {
+    return "Goes home"
+}
+
+fun AfterClassActivity(student: Students.BandMember): String {
+    return "Goes to practice"
+}
+
+fun main() {
+    val animal = Animal("Teddy Bear")
+    val child = Animal("Teddy")
+    animal.children.add(child)
+    val cat = Cat("Cat")
+    cat.children.add(Cat("Baby Cat"))
+    // println(HallMornitor is Students.BandMember.OboePlayer)
+    // println(HallMornitor !is Students.BandMember.OboePlayer)
+    //   println(HallMornitor is Person)
+    // (Students.BandMember.OboePlayer  as Student).minimumPracticeTime
+    //   (HallMornitor as? Students.BandMember)?.minPracticeTime
+    val John = StudentAthlete("John", "Doe")
+    val math = Grade(9, "B", 3)
+    val physics = Grade(9, "F", 3)
+    val chemistry = Grade(9, "F", 3)
+    John.recordGrade(math)
+    John.recordGrade(physics)
+    println(John.isEligible)
+    John.recordGrade(chemistry)
+    println(John.isEligible)
+    //AfterClassActivity(Students.BandMember.oboePlayer)
+    // AfterClassActivity(oboePlayer as Students)
+// PICK UP FROM HERE https://youtu.be/9PgHerHFH-A
+
+}
+    }
+//Polymorphism
+//val range: IntRange = 0.rangeTo(1000)
+
+/*
+val Range: IntRange = 0..1000*/
+data class Sport(val name: String)
+class Student2(firstName: String, lastName: String): Person(firstName, lastName){
+    var grades = mutableListOf<Grade>()
+    var sports = mutableListOf<Sport>()
+
+}
