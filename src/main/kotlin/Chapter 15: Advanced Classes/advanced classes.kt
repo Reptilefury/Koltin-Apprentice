@@ -103,7 +103,7 @@ open class Animal(var name: String){
 }
 
 class Cat(name: String) : Animal(name)
-class StudentAthlete(firstName: String, lastName: String) : Students(firstName, lastName) {
+open class StudentAthlete(firstName: String, lastName: String) : Students(firstName, lastName) {
     var failedClasses = mutableListOf<Grade>()
     override fun recordGrade(grade: Grade){
         var newFailedClasses = mutableListOf<Grade>()
