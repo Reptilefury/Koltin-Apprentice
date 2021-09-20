@@ -63,28 +63,34 @@ sealed class Resource {
 
 }
 
-enum class DayOfTheWeek {
-    Sunday,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
+enum class DayOfTheWeek(val isWeekend:Boolean) {
+   /* companion object{
+        fun Today():DayOfTheWeek{
+
+        }*/
+    //PiCKUP FROM HERE
+
+    Monday(false),
+    Tuesday(false),
+    Wednesday(false),
+    Thursday(false),
+    Friday(true),
+    Saturday(true),
+    Sunday(true);
 }
-enum class MonthsOfTheYear{
-    January,
-    Febuary,
-    March,
-    April,
-    May,
-    June,
-    July,
-    August,
-    September,
-    October,
-    November,
-    December
+enum class MonthsOfTheYear(val isVacation:Boolean){
+    January(false),
+    Febuary(false),
+    March(false),
+    April(false),
+    May(false),
+    June(false),
+    July(false),
+    August(false),
+    September(false),
+    October(false),
+    November(true),
+    December(true)
 }
 
 class Scientists {
@@ -108,9 +114,9 @@ fun main() {
     val einstein = Scientists()
     println("is ALbert Einstein a genius? = ${einstein.AlbertEinstein}")
 
-   // val dayIndex = 0
-   /* val DayAtIndex = DayOfTheWeek.values()[dayIndex]
-    println("day at $dayIndex is  $DayAtIndex")*/
+    val dayIndex = 0
+   val DayAtIndex = DayOfTheWeek.values()[dayIndex]
+    println("day at $dayIndex is  $DayAtIndex")
     val MonthIndex = 0
     val MonthAtIndex = MonthsOfTheYear.values()[MonthIndex]
     println("the month at $MonthIndex is $MonthAtIndex")
@@ -122,5 +128,10 @@ fun main() {
     val FirstBrand = 0
     val FirstBrandAtComputers = ComputerBrands.values()[FirstBrand]
     println("The FirstBrand at $FirstBrand is $FirstBrandAtComputers")
-    val Hp  =
+    val Hp = 0
+    val HpAtIndex = ComputerBrands.values()[Hp]
+    println("The brand at $Hp is $HpAtIndex")
+    println("${DayAtIndex.ordinal} : ${DayAtIndex.name}, isWeekend: ${DayAtIndex.isWeekend}")
+    println("${MonthAtIndex.ordinal}, ${MonthAtIndex.name} , Is Vacation: ${MonthAtIndex.isVacation}")
+
 }
