@@ -35,7 +35,7 @@ open class C() : B() {
 
 val c = C()
 val a = A()
-fun main() {
+/*fun main() {
     // println(c as A)
     //println(a as C)
     for (day in DayOfTheWeek.values()) {
@@ -44,7 +44,7 @@ fun main() {
     for(month in MonthsOfTheYear.values()){
         println("${month.ordinal}: ${month.name}")
     }
-}
+}*/
 
 class StudentBaseballPlayer(
     firstName: String,
@@ -85,4 +85,42 @@ enum class MonthsOfTheYear{
     October,
     November,
     December
+}
+
+class Scientists {
+    val Physics: MutableList<String> = mutableListOf<String>()
+    fun TypeOfScientist(genius: String): Boolean {
+        return Physics.add(genius)
+    }
+
+    val AlbertEinstein = TypeOfScientist("Physics Genius")
+}
+enum class ComputerBrands {
+    Hp,
+    AppleMacBookPro,
+    DellXps,
+    AcerPredator,
+    Lenovo,
+
+}
+
+fun main() {
+    val einstein = Scientists()
+    println("is ALbert Einstein a genius? = ${einstein.AlbertEinstein}")
+
+   // val dayIndex = 0
+   /* val DayAtIndex = DayOfTheWeek.values()[dayIndex]
+    println("day at $dayIndex is  $DayAtIndex")*/
+    val MonthIndex = 0
+    val MonthAtIndex = MonthsOfTheYear.values()[MonthIndex]
+    println("the month at $MonthIndex is $MonthAtIndex")
+
+    val tuesday = DayOfTheWeek.valueOf("Tuesday")
+    println("tuesday is ${tuesday.ordinal}")
+    val January = MonthsOfTheYear.valueOf("January")
+    println("January is ${January.ordinal}")
+    val FirstBrand = 0
+    val FirstBrandAtComputers = ComputerBrands.values()[FirstBrand]
+    println("The FirstBrand at $FirstBrand is $FirstBrandAtComputers")
+    val Hp  =
 }
