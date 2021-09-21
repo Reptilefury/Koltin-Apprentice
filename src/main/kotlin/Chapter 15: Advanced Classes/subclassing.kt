@@ -1,6 +1,8 @@
 package `Chapter 15 Advanced Classes`
 
- class Team{
+import java.util.*
+
+class Team{
      var players = mutableListOf<StudentAthlete>()
      val isEligible: Boolean
          get() {
@@ -70,6 +72,7 @@ enum class DayOfTheWeek(val isWeekend:Boolean) {
         }*/
     //PiCKUP FROM HERE
 
+
     Monday(false),
     Tuesday(false),
     Wednesday(false),
@@ -77,6 +80,19 @@ enum class DayOfTheWeek(val isWeekend:Boolean) {
     Friday(true),
     Saturday(true),
     Sunday(true);
+    companion object{
+        fun today():DayOfTheWeek{
+            val calendarOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+            val adjustedDay = calendarDayOfWeek - 2
+            val days = DayOfTheWeek.values()
+            if(adjustedDay < 0) {
+                adjustedDay += days.count()
+            }
+            val today = days.first{it.ordinal == adjustedDay}
+            return today
+
+        }
+    }
 }
 enum class MonthsOfTheYear(val isVacation:Boolean){
     January(false),
