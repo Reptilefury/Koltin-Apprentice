@@ -81,18 +81,24 @@ enum class DayOfTheWeek(val isWeekend:Boolean) {
     Saturday(true),
     Sunday(true);
     companion object{
-        fun today():DayOfTheWeek{
-            val calendarOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
-            val adjustedDay = calendarDayOfWeek - 2
+        fun today(): DayOfTheWeek {
+      val calendarOfTheWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+            var adjustedDay = calendarOfTheWeek - 2
             val days = DayOfTheWeek.values()
-            if(adjustedDay < 0) {
-                adjustedDay += days.count()
-            }
-            val today = days.first{it.ordinal == adjustedDay}
-            return today
 
+
+
+
+            if(adjustedDay < 0 ){
+                adjustedDay  += days.count()
+            }
+    val today = days.first {it.ordinal == adjustedDay}
+         return today
         }
+
+
     }
+
 }
 enum class MonthsOfTheYear(val isVacation:Boolean){
     January(false),
@@ -117,6 +123,7 @@ class Scientists {
 
     val AlbertEinstein = TypeOfScientist("Physics Genius")
 }
+
 enum class ComputerBrands {
     Hp,
     AppleMacBookPro,
@@ -126,12 +133,36 @@ enum class ComputerBrands {
 
 }
 
+enum class Direction {
+    EAST,
+    WEST,
+    SOUTH,
+    NORTH;
+}
+
+
 fun main() {
+    val today = DayOfTheWeek.today()
+
+    val num = readLine()!!.toInt()
+    for (i in 0 until 10) {
+        val result = i * num
+        println("$num * $i = $result")
+    }
+    val direction = Direction.values()
+    val directions = Direction.values()[0]
+    val directionsAt = directions
+    println("$directionsAt")
+    for (direction in Direction.values()) {
+        println("${direction.ordinal}+ ${direction.name}")
+    }
+
+
     val einstein = Scientists()
     println("is ALbert Einstein a genius? = ${einstein.AlbertEinstein}")
 
     val dayIndex = 0
-   val DayAtIndex = DayOfTheWeek.values()[dayIndex]
+    val DayAtIndex = DayOfTheWeek.values()[dayIndex]
     println("day at $dayIndex is  $DayAtIndex")
     val MonthIndex = 0
     val MonthAtIndex = MonthsOfTheYear.values()[MonthIndex]
@@ -151,3 +182,16 @@ fun main() {
     println("${MonthAtIndex.ordinal}, ${MonthAtIndex.name} , Is Vacation: ${MonthAtIndex.isVacation}")
 
 }
+
+object KataSolution {
+    fun multiplicationTable(size: Int): Array<IntArray> {
+        return Array(size) { i -> IntArray(size) { (it + 1) * (i + 1) } }
+    }
+}
+
+object KataSolution2 {
+    fun multiplicationTable(size: Int): Array<IntArray> {
+        return Array(size) { i -> IntArray(size) { (it + 1) * (i + 1) } }
+    }
+}
+// return to code wars project
