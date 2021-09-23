@@ -1,6 +1,7 @@
 package `Chapter 15 Advanced Classes`
 
 import java.util.*
+import javax.print.attribute.standard.MediaSize
 
 class Team{
      var players = mutableListOf<StudentAthlete>()
@@ -98,7 +99,13 @@ enum class DayOfTheWeek(val isWeekend:Boolean) {
 
 
     }
-
+    fun  DaysUntil(other: DayOfTheWeek):Int{
+        if(this.ordinal < other.ordinal){
+            return  other.ordinal - this.ordinal
+        }else{
+            return other.ordinal - this.ordinal + DayOfTheWeek.values().count()
+        }
+    }
 }
 enum class MonthsOfTheYear(val isVacation:Boolean){
     January(false),
@@ -144,7 +151,7 @@ enum class Direction {
 fun main() {
     val today = DayOfTheWeek.today()
 
-    val num = readLine()!!.toInt()
+ /*   val num = readLine()!!.toInt()
     for (i in 0 until 10) {
         val result = i * num
         println("$num * $i = $result")
@@ -179,9 +186,26 @@ fun main() {
     val HpAtIndex = ComputerBrands.values()[Hp]
     println("The brand at $Hp is $HpAtIndex")
     println("${DayAtIndex.ordinal} : ${DayAtIndex.name}, isWeekend: ${DayAtIndex.isWeekend}")
-    println("${MonthAtIndex.ordinal}, ${MonthAtIndex.name} , Is Vacation: ${MonthAtIndex.isVacation}")
+    println("${MonthAtIndex.ordinal}, ${MonthAtIndex.name} , Is Vacation: ${MonthAtIndex.isVacation}")*/
+    val Today = DayOfTheWeek.today()
+    val isWeekend = "It is ${if(today.isWeekend)"" else "not"} the weekend"
+
+    println("It is $today. $isWeekend")
+    val secondDay =  DayOfTheWeek.Friday
+    val daysUntil = today.DaysUntil(secondDay)
+    println("It is $today. $isWeekend there are $daysUntil days until $secondDay")
+    when (today){
+        DayOfTheWeek.Monday -> println("I don't care if $today's blue")
+        DayOfTheWeek.Tuesday -> println(" $today's gray")
+        DayOfTheWeek.Wednesday -> println(" and $today too")
+        DayOfTheWeek.Thursday -> println("$today I don't care 'bout you")
+        DayOfTheWeek.Friday -> println(" It's $today I'm in love ")
+        DayOfTheWeek.Saturday -> println("$today wait...")
+        DayOfTheWeek.Sunday -> println("$today always comes too late")
+    }
 
 }
+
 
 object KataSolution {
     fun multiplicationTable(size: Int): Array<IntArray> {
