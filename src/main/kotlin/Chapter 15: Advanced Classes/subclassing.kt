@@ -147,46 +147,74 @@ enum class Direction {
     NORTH;
 }
 
-
+sealed class AcceptedCurrencies{
+    abstract val ValueInDollars:Float
+    var amount = 0.0f
+    fun totalValueInDollars():Float{
+        return amount * ValueInDollars
+    }
+    class Dollars():AcceptedCurrencies(){
+        override val ValueInDollars: Float = 1.25f
+    }
+    class Euros():AcceptedCurrencies(){
+        override val ValueInDollars:Float = 1.5f
+    }
+    class Crypto():AcceptedCurrencies(){
+        override val ValueInDollars:Float = 259.0f
+    }
+    val name: String
+     get() = when (this){
+         is Dollars -> "Dollars biatch"
+         is Euros -> "Euros Mate"
+         is Crypto -> "Nerd stuff"
+     }
+}
 fun main() {
+    val currency = AcceptedCurrencies.Crypto()
+      currency.amount = 0.27541f
+    println("${currency.amount} of ${currency.name} is "
+    + "${currency.totalValueInDollars()} in Dollars"
+    )
+    println("You've got some ${currency.name}")
+
     val today = DayOfTheWeek.today()
 
- /*   val num = readLine()!!.toInt()
-    for (i in 0 until 10) {
-        val result = i * num
-        println("$num * $i = $result")
-    }
-    val direction = Direction.values()
-    val directions = Direction.values()[0]
-    val directionsAt = directions
-    println("$directionsAt")
-    for (direction in Direction.values()) {
-        println("${direction.ordinal}+ ${direction.name}")
-    }
+    /*   val num = readLine()!!.toInt()
+       for (i in 0 until 10) {
+           val result = i * num
+           println("$num * $i = $result")
+       }
+       val direction = Direction.values()
+       val directions = Direction.values()[0]
+       val directionsAt = directions
+       println("$directionsAt")
+       for (direction in Direction.values()) {
+           println("${direction.ordinal}+ ${direction.name}")
+       }
 
 
-    val einstein = Scientists()
-    println("is ALbert Einstein a genius? = ${einstein.AlbertEinstein}")
+       val einstein = Scientists()
+       println("is ALbert Einstein a genius? = ${einstein.AlbertEinstein}")
 
-    val dayIndex = 0
-    val DayAtIndex = DayOfTheWeek.values()[dayIndex]
-    println("day at $dayIndex is  $DayAtIndex")
-    val MonthIndex = 0
-    val MonthAtIndex = MonthsOfTheYear.values()[MonthIndex]
-    println("the month at $MonthIndex is $MonthAtIndex")
+       val dayIndex = 0
+       val DayAtIndex = DayOfTheWeek.values()[dayIndex]
+       println("day at $dayIndex is  $DayAtIndex")
+       val MonthIndex = 0
+       val MonthAtIndex = MonthsOfTheYear.values()[MonthIndex]
+       println("the month at $MonthIndex is $MonthAtIndex")
 
-    val tuesday = DayOfTheWeek.valueOf("Tuesday")
-    println("tuesday is ${tuesday.ordinal}")
-    val January = MonthsOfTheYear.valueOf("January")
-    println("January is ${January.ordinal}")
-    val FirstBrand = 0
-    val FirstBrandAtComputers = ComputerBrands.values()[FirstBrand]
-    println("The FirstBrand at $FirstBrand is $FirstBrandAtComputers")
-    val Hp = 0
-    val HpAtIndex = ComputerBrands.values()[Hp]
-    println("The brand at $Hp is $HpAtIndex")
-    println("${DayAtIndex.ordinal} : ${DayAtIndex.name}, isWeekend: ${DayAtIndex.isWeekend}")
-    println("${MonthAtIndex.ordinal}, ${MonthAtIndex.name} , Is Vacation: ${MonthAtIndex.isVacation}")*/
+       val tuesday = DayOfTheWeek.valueOf("Tuesday")
+       println("tuesday is ${tuesday.ordinal}")
+       val January = MonthsOfTheYear.valueOf("January")
+       println("January is ${January.ordinal}")
+       val FirstBrand = 0
+       val FirstBrandAtComputers = ComputerBrands.values()[FirstBrand]
+       println("The FirstBrand at $FirstBrand is $FirstBrandAtComputers")
+       val Hp = 0
+       val HpAtIndex = ComputerBrands.values()[Hp]
+       println("The brand at $Hp is $HpAtIndex")
+       println("${DayAtIndex.ordinal} : ${DayAtIndex.name}, isWeekend: ${DayAtIndex.isWeekend}")
+       println("${MonthAtIndex.ordinal}, ${MonthAtIndex.name} , Is Vacation: ${MonthAtIndex.isVacation}")*/
     val Today = DayOfTheWeek.today()
     val isWeekend = "It is ${if(today.isWeekend)"" else "not"} the weekend"
 
