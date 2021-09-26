@@ -1,6 +1,7 @@
 import Objects.FS
 import Objects.Fat32
 import Objects.memoryFileSystem
+import `Chapter 16 Enum classes`.Downloader
 
 /*fun main(args:Array<String>){
 
@@ -566,13 +567,24 @@ println(array.joinToString())
         fun addList(list: MovieList){
             lists[list.name] = list
         }
+
         fun list(name: String): MovieList? = lists[name]
     }
-    fun getFilesystem(): FS{
-        return memoryFileSystem(listOf("Path to file:/C/programFiles86", "MyStuff/Apps/Compressed"),"Anna Contents")
+
+    fun getFilesystem(): FS {
+        return memoryFileSystem(listOf("Path to file:/C/programFiles86", "MyStuff/Apps/Compressed"), "Anna Contents")
     }
+
     val fileSystem: FS = getFilesystem()
     fileSystem.readDir()
 
+    Downloader().downloadData("foo.com/bar",
 
+        progress = { downloadState ->
+        },
+
+        completion = { error, list ->
+            list?.let { println("Got list with ${list.size} items") }
+        }
+    )
 }
