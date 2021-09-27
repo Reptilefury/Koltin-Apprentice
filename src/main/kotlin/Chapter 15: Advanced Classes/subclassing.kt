@@ -106,6 +106,11 @@ enum class DayOfTheWeek(val isWeekend:Boolean) {
             return other.ordinal - this.ordinal + DayOfTheWeek.values().count()
         }
     }
+/*    fun daysUntilWeekend():Int{
+        return daysUntilWeekend()
+    }*/
+
+//Challange to be solved
 }
 enum class MonthsOfTheYear(val isVacation:Boolean){
     January(false),
