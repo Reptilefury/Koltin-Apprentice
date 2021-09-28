@@ -1,19 +1,30 @@
 package `interface`
 
-interface  vehicle {
+interface vehicle {
     fun Accelerating()
     fun Stop()
 }
 class Unicycle:vehicle{
     var peddling = false
-
     override fun Accelerating(){
-        var peddling = true
+        peddling = true
     }
     override fun Stop(){
-        var peddling = false
+        peddling = false
     }
 }
+class bus:vehicle{
+    var speeding = false
+    override fun Accelerating(){
+       var  speeding = true
+    }
+    override fun  Stop(){
+       var speeding= false
+    }
+}
+
+
+
 class truck:vehicle{
 
     var speeding = false
@@ -27,31 +38,38 @@ class truck:vehicle{
 
 
 }
-
-enum class Direction {
-LEFT,
-RIGHT
+enum class Direction{
+    RIGHT,
+    LEFT,
 }
-interface vehicleDirection{
-   fun accelerating()
-   fun stop()
-   fun turn(direction: Direction)
-   fun description():String
+interface VehicleDirection{
+    fun Accelerating()
+    fun Stop()
+    fun turn(direction: Direction)
+    fun description():String
 }
-interface optionalDirectionVehicle{
-    //fun accelerating()
-    //fun stop()
-    fun turn(direction: Direction = Direction.RIGHT)
+interface operationalDirectionVehicle{
+    //fun Accelerating()
+    //fun Stop()
+    fun turn(direction: Direction)
     //fun description():String
 }
-class optionalDirection:optionalDirectionVehicle{
+class operationalDirection:operationalDirectionVehicle{
     override fun turn(direction: Direction) {
         println(direction)
     }
 }
-val car = optionalDirection()
+val car = operationalDirection()
+
+interface SpaceVehicle{
+    fun Accelerating()
+    fun Stop(){
+        println("whoa stop!!")
+    }
+}
 fun main(){
-    println(car.turn())
+    println(car.turn(Direction.RIGHT))
     println(car.turn(Direction.RIGHT))
 }
+
 //REPEAT and do default method implementations
