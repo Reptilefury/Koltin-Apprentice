@@ -67,9 +67,55 @@ interface SpaceVehicle{
         println("whoa stop!!")
     }
 }
+interface WaterVessels{
+    fun Sail()
+    fun DropAnkor(){
+        println("We are sinking Captain!!")
+    }
+}
+class Yatch:WaterVessels{
+    override fun Sail(){
+        println("Rich people are sailing mate!!")
+    }
+}
+class cargoShip: WaterVessels{
+    override fun Sail() {
+        println("Up and away!!")
+    }
+
+    override fun DropAnkor() {
+        println("Yikes!!, we going down boys!! call for help!!")
+    }
+}
+
+class LightFreighter: SpaceVehicle{
+    override fun Accelerating(){
+        println("Proceed to hyperSpace")
+    }
+}
+class Starship:SpaceVehicle{
+    override fun Accelerating(){
+        println("Luke Iam your father!!")
+    }
+
+    override fun Stop() {
+        super.Stop()
+    }
+}
+
 fun main(){
-    println(car.turn(Direction.RIGHT))
-    println(car.turn(Direction.RIGHT))
+    val StarWars = Starship()
+    val richClass = Yatch()
+    val MvFaina = cargoShip()
+    val falcon = LightFreighter()
+    println(StarWars.Accelerating())
+    println(StarWars.Stop())
+    println(richClass.Sail())
+    println(MvFaina.DropAnkor())
+    println(falcon.Accelerating())
+    println(falcon.Stop())
+    //println(car.turn(Direction.RIGHT))
+        //println(car.turn(Direction.RIGHT))
 }
 
 //REPEAT and do default method implementations
