@@ -1,6 +1,7 @@
 package `interface`
 
 import jdk.incubator.vector.DoubleVector
+import java.awt.geom.RectangularShape
 import kotlin.math.PI
 
 interface vehicle {
@@ -171,9 +172,51 @@ interface Area {
     val area: Double
 
 }
+interface Area2{
+    val area:Double
+}
+//Implementing multiple interfaces
+interface Wheeled{
+    val numberOfWheels: Int
+    val wheelSize:Double
+}
+class Tricycle:vehicle,Wheeled{
+    override fun Accelerating() {
+        TODO("Not yet implemented")
+    }
+
+    override fun Stop() {
+        TODO("Not yet implemented")
+    }
+
+    override val numberOfWheels: Int
+        get() = TODO("Not yet implemented")
+    override val wheelSize: Double
+        get() = TODO("Not yet implemented")
+
+}
+public interface Comparable<in T>{
+    public  operator fun compareTo(other:T):Int
+}
 
 fun main() {
 
+    val cars = listOf("Lamborghini", "Ferrari", "Rolls Royce")
+    val numbers = mapOf("Lena" to 44, "Anna" to 32, "Jenna"  to 1)
+
+     for(car in cars){
+         println(car)
+     }
+    for(qb in numbers){
+        println("${qb.key} wears ${qb.value}")
+    }
+
+
+    class Rectangle(val length:Double, val width:Double, val height: Double):Area2{
+        override val area: Double
+        get()= length * width * height
+    }
+val rectangle = Rectangle(4.0,5.0, 6.0)
     class Square(val side: Double) : Area {
         override val area: Double
             get() = side * side
@@ -192,8 +235,7 @@ fun main() {
     val square = Square(5.0)
     val triangle = Triangle(6.0, 4.0, 3.0)
     val circle = Circle(4.0)
-    val shape = arrayOf(square, triangle, circle)
-
+    val shape = arrayOf(square,triangle,circle)
     println(shape.map { it.area })
     val StarWars = Starship()
     val richClass = Yatch()
