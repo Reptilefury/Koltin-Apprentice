@@ -195,28 +195,56 @@ class Tricycle:vehicle,Wheeled{
         get() = TODO("Not yet implemented")
 
 }
+
 public interface Comparable<in T>{
-    public  operator fun compareTo(other:T):Int
+    public operator fun compareTo(other:T):Int
+}
+public interface CompareTo<in T>{
+    public operator fun compareTo(other:T):Int
+}
+
+interface SizedVehicle{
+    var  length: Int
+}
+
+class Boat:SizedVehicle,CompareTo<Boat>{
+    override var length: Int = 0
+
+    override fun compareTo(other: Boat): Int {
+         return when{
+             length > other.length -> 1
+             length == other.length -> 0
+             else -> -1
+         }
+    }
+
+
+
 }
 
 fun main() {
-
-    val cars = listOf("Lamborghini", "Ferrari", "Rolls Royce")
-    val numbers = mapOf("Lena" to 44, "Anna" to 32, "Jenna"  to 1)
-
-     for(car in cars){
-         println(car)
-     }
-    for(qb in numbers){
+    val Maersk = Boat()
+    Maersk.length = 990
+    val MVFaina = Boat()
+    MVFaina.length = 880
+    println(Maersk > MVFaina)
+    val cars = listOf("Lamborghini", "Ferrari", "Prado", "V8")
+    val number = mapOf("Lena" to 1, "Anna" to 2, "Chloe" to 3, "Jenna" to 4)
+    for (car in cars) {
+        println(car)
+    }
+    for (qb in number) {
         println("${qb.key} wears ${qb.value}")
     }
 
 
-    class Rectangle(val length:Double, val width:Double, val height: Double):Area2{
+    class Rectangle(val length: Double, val width: Double, val height: Double) : Area2 {
         override val area: Double
-        get()= length * width * height
+            get() = length * width * height
     }
-val rectangle = Rectangle(4.0,5.0, 6.0)
+
+    val rectangle = Rectangle(4.0, 5.0, 6.0)
+
     class Square(val side: Double) : Area {
         override val area: Double
             get() = side * side
