@@ -207,14 +207,14 @@ interface SizedVehicle{
     var  length: Int
 }
 
-class Boat:SizedVehicle,CompareTo<Boat>{
+class Boat: SizedVehicle, Comparable<Boat>{
     override var length: Int = 0
 
     override fun compareTo(other: Boat): Int {
-         return when{
-             length > other.length -> 1
-             length == other.length -> 0
-             else -> -1
+        return when{
+            length > other.length -> 1
+            length == other.length -> 0
+            else -> -1
          }
     }
 
@@ -223,6 +223,16 @@ class Boat:SizedVehicle,CompareTo<Boat>{
 }
 
 fun main() {
+
+    val Evergreen = Boat()
+    Evergreen.length = 996
+
+    val MVfaina = Boat()
+     MVfaina.length = 888
+
+    println(Evergreen > MVfaina)
+    //println(titanic > qe2)
+
     val Maersk = Boat()
     Maersk.length = 990
     val MVFaina = Boat()
