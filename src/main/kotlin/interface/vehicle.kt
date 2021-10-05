@@ -221,8 +221,94 @@ class Boat: SizedVehicle, Comparable<Boat>{
 
 
 }
+interface cleanable{
+    fun clean()
+}
+interface feedable{
+    fun feed()
+}
+interface cagable:cleanable{
+    fun cage()
+}
+interface tankable:cleanable{
+    fun tank()
+}
+interface walkable:cleanable{
+    fun walking()
+}
+
+class dog:cagable, feedable, walkable{
+    override fun cage() {
+       println("Put that dog in a cage!!")
+    }
+
+    override fun clean() {
+        println("Clean doggo!!")
+    }
+
+    override fun feed() {
+        println("Feed that mf!!")
+    }
+
+}
+class cat:feedable, cleanable {
+    override fun clean() {
+        println("Clean that kitty")
+    }
+
+    override fun feed() {
+        println("Feed the kitty!!")
+    }
+
+
+}
+class fish:tankable,cleanable, feedable{
+    override fun tank() {
+      println("Yoo tank that cat fish!!")
+    }
+
+    override fun clean() {
+      println("Clean that fish!!")
+    }
+
+    override fun feed() {
+
+        println("Feed the fish")
+    }
+
+}
+class bird:cagable,feedable{
+    override fun cage() {
+        println("Cage that birdy!!")
+    }
+
+    override fun clean() {
+        println("Trynna clean this birds menn!!")
+    }
+
+    override fun feed() {
+        println("feed those suckers!!")
+    }
+
+}
 
 fun main() {
+//dog, cat , fish , bird
+    //create arrays
+val Dog = dog()
+val Cat = cat()
+val Fish = fish()
+val Bird = bird()
+
+val WalkingDuties:Array<walkable> = arrayOf()
+val FeedingDuties:Array<feedable>  = arrayOf()
+val CagingDuties: Array<cagable>  = arrayOf()
+val tankingDuties: Array<tankable> = arrayOf()
+val cleaningDuties: Array<cleanable> = arrayOf()
+
+
+
+
 
     val Evergreen = Boat()
     Evergreen.length = 996
@@ -277,7 +363,7 @@ fun main() {
     println(shape.map { it.area })
     val StarWars = Starship()
     val richClass = Yatch()
-    val MvFaina = cargoShip()
+    val MvFaina = cargoShip(
     val falcon = LightFreighter()
     println(StarWars.Accelerating())
     println(StarWars.Stop())
