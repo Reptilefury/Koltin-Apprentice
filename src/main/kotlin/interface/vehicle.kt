@@ -221,73 +221,72 @@ class Boat: SizedVehicle, Comparable<Boat>{
 
 
 }
+//cleanable, feedable, cagable, tankable, walkable,
 interface cleanable{
     fun clean()
 }
 interface feedable{
-    fun feed()
+    fun  feeding()
 }
 interface cagable:cleanable{
-    fun cage()
+    fun  caging()
 }
-interface tankable:cleanable{
-    fun tank()
+interface tankable{
+    fun tanking()
 }
 interface walkable:cleanable{
     fun walking()
 }
 
-class dog:cagable, feedable, walkable{
-    override fun cage() {
-       println("Put that dog in a cage!!")
+
+class dog:cagable, walkable, cleanable, feedable{
+    override fun caging() {
+      println("Cage this bad dog!!")
+    }
+
+    override fun walking() {
+        println("Walking dog!!")
     }
 
     override fun clean() {
-        println("Clean doggo!!")
+        println("clean this dog!!")
     }
 
-    override fun feed() {
-        println("Feed that mf!!")
+    override fun feeding() {
+        println("Let's feed this doggo!!")
     }
 
 }
-class cat:feedable, cleanable {
+class cat:cleanable, feedable{
     override fun clean() {
-        println("Clean that kitty")
     }
 
-    override fun feed() {
-        println("Feed the kitty!!")
+    override fun feeding() {
+        println("Feeding this kitty!!")
     }
-
 
 }
-class fish:tankable,cleanable, feedable{
-    override fun tank() {
-      println("Yoo tank that cat fish!!")
+class fish:tankable, feedable{
+    override fun feeding() {
+        println("Feeding this cat fish man!!")
     }
 
-    override fun clean() {
-      println("Clean that fish!!")
-    }
-
-    override fun feed() {
-
-        println("Feed the fish")
+    override fun tanking() {
+        println("ok let's tank this mf!! up")
     }
 
 }
 class bird:cagable,feedable{
-    override fun cage() {
-        println("Cage that birdy!!")
+    override fun caging() {
+      println("caging the bird  takes a skill!!")
     }
 
     override fun clean() {
-        println("Trynna clean this birds menn!!")
+        println("takes time to clean a cage!!")
     }
 
-    override fun feed() {
-        println("feed those suckers!!")
+    override fun feeding() {
+        println("Ok let's feed this bird!!")
     }
 
 }
@@ -296,17 +295,17 @@ fun main() {
 //dog, cat , fish , bird
     //create arrays
 val Dog = dog()
-val Cat = cat()
-val Fish = fish()
+val  Cat = cat()
+val Fish =  fish()
 val Bird = bird()
 
-val WalkingDuties:Array<walkable> = arrayOf()
-val FeedingDuties:Array<feedable>  = arrayOf()
-val CagingDuties: Array<cagable>  = arrayOf()
-val tankingDuties: Array<tankable> = arrayOf()
-val cleaningDuties: Array<cleanable> = arrayOf()
+val walkingDuties:Array<walkable> = arrayOf(Dog)
+val FeedableDuties: Array<feedable> = arrayOf(Bird, Dog, Cat, Fish)
+val CagingDuties: Array<cagable> = arrayOf(Bird, Dog)
+val CleaningDuties: Array<cleanable> = arrayOf(Dog, Cat,)
+val TankingDuties: Array<tankable> = arrayOf(Fish)
 
-
+//Walking, FeedingDuties, Caging, Cleaning,Tanking
 
 
 
@@ -363,14 +362,14 @@ val cleaningDuties: Array<cleanable> = arrayOf()
     println(shape.map { it.area })
     val StarWars = Starship()
     val richClass = Yatch()
-    val MvFaina = cargoShip(
-    val falcon = LightFreighter()
-    println(StarWars.Accelerating())
-    println(StarWars.Stop())
+    val MvFaina = cargoShip()
+   // val falcon = LightFreighter()
+    //println(StarWars.Accelerating())
+   /* println(StarWars.Stop())
     println(richClass.Sail())
     println(MvFaina.DropAnkor())
     println(falcon.Accelerating())
-    println(falcon.Stop())
+    println(falcon.Stop())*/
     //println(car.turn(Direction.RIGHT))
         //println(car.turn(Direction.RIGHT))
 }
