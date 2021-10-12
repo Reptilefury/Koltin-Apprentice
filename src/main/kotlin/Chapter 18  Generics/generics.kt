@@ -70,15 +70,33 @@ class CheapThing(val name: String) {
         return name
     }
 }
+
+class BreakableThing(val name: String, var isBroken: Boolean= false ){
+    fun smash() {
+        isBroken = true
+    }
+    override fun toString():String{
+        return name
+    }
+}
+val television = BreakableThing("Samsung")
+val BreakableThings = listOf(television,
+      BreakableThing("Mirror"),
+      BreakableThing("Desktops"),
+      BreakableThing("Plates")
+    )
+
 fun main() {
+    val expensiveMover = Mover(BreakableThings)
+    expensiveMover.moveEverythingIntoNewPlace()
     val cheapThings = listOf(
         CheapThing("Coffee Table"),
         CheapThing("BeanBag chair"),
         CheapThing("Study table"),
         CheapThing("Carpet"),
-        )
+    )
 
-  val  CheapMover = Mover(cheapThings)
+    val CheapMover = Mover(cheapThings)
     CheapMover.moveEverything()
     CheapMover.moveEverythingIntoNewPlace()
     CheapMover.finishMove()
