@@ -13,7 +13,7 @@ fun List<String>.toBulletedList(): String {
 }*/
 
 
-class Mover<T>(
+class Mover<T, Checkable>(
     thingstoMove: List<T>,
     val truckHeightInches: Int = (12 * 12)
 ) {
@@ -21,6 +21,7 @@ class Mover<T>(
     private var thingsLeftInOldPlace = mutableListOf<T>()
     private var thingInTruck = mutableListOf<T>()
     private var thingsInNewPlace = mutableListOf<T>()
+    private var thingsWhichFailCheck = mutableListOf<T>()
 
     init {
         thingsLeftInOldPlace.addAll(thingstoMove)
@@ -29,11 +30,23 @@ class Mover<T>(
     fun moveEverything() {
         while (thingsLeftInOldPlace.count() > 0) {
             val item = thingsLeftInOldPlace.removeAt(0)
-            thingInTruck.add(item)
-            println("Moved your $item to truck!!")
+           if(item is BreakableThing){
+               if (!item.isBroken){
+                   thingInTruck.add(item)
+                   print("Moved your $item to truck")
+               } else{
+                   println("Could not move your $item to truck")
+               }
+           } else {
+               thingInTruck.add(item)
+               println("Your $item was moved to truck mate!!")
+           }
+
         }
     }
-
+ interface Checkable{
+     fun checkIsOk():Boolean
+ }
     fun moveEverythingIntoNewPlace() {
         while (thingInTruck.count() > 0) {
             val item = thingInTruck.removeAt(0)
@@ -87,8 +100,11 @@ val BreakableThings = listOf(television,
     )
 
 fun main() {
-    val expensiveMover = Mover(BreakableThings)
+   val expensiveMover = Mover(BreakableThings)
     expensiveMover.moveEverythingIntoNewPlace()
+    expensiveMover.moveEverything()
+    expensiveMover.finishMove()
+    television.smash()
     val cheapThings = listOf(
         CheapThing("Coffee Table"),
         CheapThing("BeanBag chair"),
