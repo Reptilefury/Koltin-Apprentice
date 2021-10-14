@@ -44,9 +44,9 @@ class Mover<T, Checkable>(
 
         }
     }
- interface Checkable{
-     fun checkIsOk():Boolean
- }
+    interface Checkable{
+        fun checkIsOk():Boolean
+    }
     fun moveEverythingIntoNewPlace() {
         while (thingInTruck.count() > 0) {
             val item = thingInTruck.removeAt(0)
@@ -57,7 +57,12 @@ class Mover<T, Checkable>(
 
     fun finishMove() {
         println("Ok we are done! we were able to move your ${"Bullted list function missing"} ")
+        if (!thingsWhichFailCheck.isEmpty()) {
+            println("But we need to talk about your:${thingsWhichFailCheck}")
+        }
     }
+
+
 }
 
 //Kotlin generics explained in full depth
@@ -78,18 +83,22 @@ class Event<T, V>(value: T? = null, data: V? = null) {
 
 }
 
-class CheapThing(val name: String) {
+class CheapThing(val name: String):Checkable{
     override fun toString(): String {
         return name
     }
+    override fun checkIsOk():Boolean = true
 }
 
-class BreakableThing(val name: String, var isBroken: Boolean= false ){
+class BreakableThing(val name: String, var isBroken: Boolean= false ):Checkable{
     fun smash() {
         isBroken = true
     }
     override fun toString():String{
         return name
+    }
+    override fun isCheckOk():Boolean{
+        return !isBroken
     }
 }
 val television = BreakableThing("Samsung")
@@ -100,7 +109,7 @@ val BreakableThings = listOf(television,
     )
 
 fun main() {
-   val expensiveMover = Mover(BreakableThings)
+   val expensiveMover = Mover<String,String>(BreakableThings)
     expensiveMover.moveEverythingIntoNewPlace()
     expensiveMover.moveEverything()
     expensiveMover.finishMove()
@@ -112,7 +121,7 @@ fun main() {
         CheapThing("Carpet"),
     )
 
-    val CheapMover = Mover(cheapThings)
+    val CheapMover = Mover<T,Checkable>(cheapThings)
     CheapMover.moveEverything()
     CheapMover.moveEverythingIntoNewPlace()
     CheapMover.finishMove()
@@ -148,3 +157,4 @@ fun main() {
 //println("Things: ${things.toBulletedList()}")
 
  }
+//REPEAT GENERICS
