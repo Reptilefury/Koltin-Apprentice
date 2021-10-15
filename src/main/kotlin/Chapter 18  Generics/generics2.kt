@@ -1,7 +1,5 @@
 package `Chapter 18  Generics`
 
-import kotlin.reflect.jvm.internal.impl.types.model.TypeSystemCommonSuperTypesContext
-
 class ArrayUtil<T>(private val array: Array<T>) {
     fun findElement(element: T, foundElement: (index: Int, element: T?) -> Unit) {
         for (i in array.indices) {
@@ -15,7 +13,7 @@ class ArrayUtil<T>(private val array: Array<T>) {
     }
 }
 
-fun <T, X> TestingParameter(parameter1: T, parameter2: T) {
+fun <T, X> TestingParameter(parameter1: T, parameter2: Int) {
     println("$parameter1 and $parameter2")
 }
 class  EvenList<T>(val list:List<T>){
@@ -23,6 +21,20 @@ class  EvenList<T>(val list:List<T>){
        return list.filterIndexed { index, value -> index % 2 == 0  }
    }
 }
+/*interface  Container<T>{
+   *//* fun canAddAnotherItem():Boolean
+    fun addItem(item: T)
+    fun canRemoveAnotherItem():Boolean
+    fun removeItem():T
+    fun getAnother():Container<T>
+    fun contents():List<T>*//*
+    fun canAddAnotherItem():Boolean
+    fun addItem(item: T)
+    fun canRemoveAnotherItem():Boolean
+    fun removeItem():T
+    fun getAnother():Container<T>
+    fun contents():List<T>
+}*/
 
 fun main() {
      val result = EvenList<String>(listOf("This ", "Check"))

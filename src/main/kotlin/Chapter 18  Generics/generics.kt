@@ -1,7 +1,5 @@
 package `Chapter 18  Generics`
 
-import javax.swing.border.EmptyBorder
-
 
 fun List<String>.toBulletedList(): String {
     val separator = "\n - "
@@ -11,7 +9,9 @@ fun List<String>.toBulletedList(): String {
     val separator = "\n - "
     return this.map{"$it"}.joinToString(separator, prefix = separator, postfix = "\n")
 }*/
-
+interface Checkable{
+    fun checkIsOk():Boolean
+}
 
 class Mover<T, Checkable>(
     thingstoMove: List<T>,
@@ -19,15 +19,16 @@ class Mover<T, Checkable>(
 ) {
     // thingsLeftInOldPlace thingsInTruck thingsInNewPlace
     private var thingsLeftInOldPlace = mutableListOf<T>()
-    private var thingInTruck = mutableListOf<T>()
-    private var thingsInNewPlace = mutableListOf<T>()
+    private var thingInTruck = mutableListOf<Any>()
+    private var thingsInNewPlace = mutableListOf<Any>()
     private var thingsWhichFailCheck = mutableListOf<T>()
 
     init {
         thingsLeftInOldPlace.addAll(thingstoMove)
     }
 
-    fun moveEverything() {
+    fun moveEverything(startingContainer: Container<T>?) {
+        val currentContainer = startingContainer
         while (thingsLeftInOldPlace.count() > 0) {
             val item = thingsLeftInOldPlace.removeAt(0)
            if(item is BreakableThing){
@@ -38,11 +39,12 @@ class Mover<T, Checkable>(
                    println("Could not move your $item to truck")
                }
            } else {
-               thingInTruck.add(item)
+               thingInTruck.add(item!!)
                println("Your $item was moved to truck mate!!")
            }
 
         }
+        currentContainer?.let{moveContainerToTruck(it)}
     }
     interface Checkable{
         fun checkIsOk():Boolean
@@ -61,7 +63,10 @@ class Mover<T, Checkable>(
             println("But we need to talk about your:${thingsWhichFailCheck}")
         }
     }
-
+private fun MoveEverythingToTruck(container: Container<T>){
+    thingInTruck.add(container)
+    println("Moved Your container with ${container.contents()}")
+}
 
 }
 
@@ -94,12 +99,15 @@ class BreakableThing(val name: String, var isBroken: Boolean= false ):Checkable{
     fun smash() {
         isBroken = true
     }
+
+    override fun checkIsOk(): Boolean {
+        return !isBroken
+    }
+
     override fun toString():String{
         return name
     }
-    override fun isCheckOk():Boolean{
-        return !isBroken
-    }
+
 }
 val television = BreakableThing("Samsung")
 val BreakableThings = listOf(television,
@@ -107,7 +115,14 @@ val BreakableThings = listOf(television,
       BreakableThing("Desktops"),
       BreakableThing("Plates")
     )
-
+interface Container<T>{
+    fun addAnotherItem():Boolean
+    fun addItem(item:T)
+    fun canRemoveAnotherItem():Boolean
+    fun removeItem():T
+    fun getAnother():Container<T>
+    fun contents():List<T>
+}
 fun main() {
    val expensiveMover = Mover<String,String>(BreakableThings)
     expensiveMover.moveEverythingIntoNewPlace()
