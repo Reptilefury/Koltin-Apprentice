@@ -28,11 +28,23 @@ class Mover<T, Checkable>(
     }
 
     fun moveEverything(startingContainer: Container<T>?) {
-        val currentContainer = startingContainer
+        var currentContainer = startingContainer
         while (thingsLeftInOldPlace.count() > 0) {
             val item = thingsLeftInOldPlace.removeAt(0)
            if(item is BreakableThing){
                if (!item.isBroken){
+                   if(currentContainer != null ){
+                       if(!currentContainer.canAddAnotherItem()){
+                           moveContainerToTruck(currentContainer)
+                           currentContainer = CurrentContainer.getAnother()
+
+                       }
+                       currentContainer.addItem(item)
+                       println("Packed your $item!")
+                   } else {
+                       thingInTruck.add(item)
+                       println("Moved your $item to truck!")
+                   }
                    thingInTruck.add(item)
                    print("Moved your $item to truck")
                } else{
