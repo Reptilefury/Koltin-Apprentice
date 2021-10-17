@@ -1,5 +1,7 @@
 package `Chapter 18  Generics`
 
+import java.awt.event.ItemListener
+
 
 fun List<String>.toBulletedList(): String {
     val separator = "\n - "
@@ -13,7 +15,7 @@ interface Checkable{
     fun checkIsOk():Boolean
 }
 
-class Mover<T, Checkable>(
+class Mover<T:Checkable>(
     thingstoMove: List<T>,
     val truckHeightInches: Int = (12 * 12)
 ) {
@@ -36,7 +38,7 @@ class Mover<T, Checkable>(
                    if(currentContainer != null ){
                        if(!currentContainer.canAddAnotherItem()){
                            moveContainerToTruck(currentContainer)
-                           currentContainer = CurrentContainer.getAnother()
+                           currentContainer = currentContainer.getAnother()
 
                        }
                        currentContainer.addItem(item)
@@ -79,6 +81,17 @@ private fun MoveEverythingToTruck(container: Container<T>){
     thingInTruck.add(container)
     println("Moved Your container with ${container.contents()}")
 }
+    private fun moveContainerToTruck(container: Container<T>){
+        thingInTruck.add(container)
+        println("Moved your containers with your ${container.contents()} to the truck")
+    }
+private fun MoveEverythingIntoNewPlace(item:T){
+    if(item.checkIsOk()){
+       thingsInNewPlace.add(item)
+       println("Moved your $item into new place!!")
+    }
+
+   }
 
 }
 
@@ -128,17 +141,18 @@ val BreakableThings = listOf(television,
       BreakableThing("Plates")
     )
 interface Container<T>{
-    fun addAnotherItem():Boolean
+    fun canAddAnotherItem():Boolean
     fun addItem(item:T)
     fun canRemoveAnotherItem():Boolean
     fun removeItem():T
     fun getAnother():Container<T>
     fun contents():List<T>
 }
+
 fun main() {
-   val expensiveMover = Mover<String,String>(BreakableThings)
+   val expensiveMover = Mover(BreakableThings)
     expensiveMover.moveEverythingIntoNewPlace()
-    expensiveMover.moveEverything()
+    expensiveMover.moveEverything(null)
     expensiveMover.finishMove()
     television.smash()
     val cheapThings = listOf(
@@ -148,8 +162,8 @@ fun main() {
         CheapThing("Carpet"),
     )
 
-    val CheapMover = Mover<T,Checkable>(cheapThings)
-    CheapMover.moveEverything()
+    val CheapMover = Mover(cheapThings)
+    CheapMover.moveEverything(null)
     CheapMover.moveEverythingIntoNewPlace()
     CheapMover.finishMove()
     Event<String, Int>("Testing Generics!", 12)

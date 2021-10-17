@@ -1,5 +1,8 @@
 package `Chapter 18  Generics`
-
+open class Mammal{
+    fun eat(){}
+    fun Sleep(){}
+}
 class Sloth(val name: String, val isTwoFingered: Boolean) {
     fun eat() {}
     fun sleep() {}
@@ -9,6 +12,12 @@ data class Panda(val name: String) {
     fun eat() {}
     fun Sleep() {}
 }
+data class Kooala(val name:String){
+    fun eat(){}
+    fun sleep(){}
+
+}
+
 
 fun FeedCrew(crew: List<Sloth>) {
     crew.forEach {
@@ -22,8 +31,27 @@ fun FeedPandaCrew(crew:List<Panda>){
           println("${it.name}  has ate some Kungfu Panda Noodles.")
       }
 }
+fun FeedKoolaCrew(crew:List<Kooala>){
+    crew.forEach{
+        it.eat()
+        println("${it.name} has ate some Koola bamboo!!")
+    }
+}
+
 
 fun main() {
+    val kooala:Kooala?
+    val koolaCrew = listOf<Kooala>(
+        Kooala("Aurelie"),
+        Kooala("Jenna"),
+        Kooala("Anna"),
+        Kooala("Lena"),
+        Kooala("Chloe"),
+        Kooala("Logan Roy"),
+    )
+    val koolaList:List<Kooala> = listOf()
+    val koolaList2:List<Kooala> = listOf()
+
     val sloth: Sloth?
     val slothCrew = listOf<Sloth>(
         Sloth("Jerry", true),
