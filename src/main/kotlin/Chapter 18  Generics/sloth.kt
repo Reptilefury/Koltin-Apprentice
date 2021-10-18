@@ -1,25 +1,13 @@
 package `Chapter 18  Generics`
-open class Mammal{
+open class Mammal(val name: String){
+
     fun eat(){}
     fun Sleep(){}
 }
-class Sloth(val name: String, val isTwoFingered: Boolean) {
-    fun eat() {}
-    fun sleep() {}
-}
-
-data class Panda(val name: String) {
-    fun eat() {}
-    fun Sleep() {}
-}
-data class Kooala(val name:String){
-    fun eat(){}
-    fun sleep(){}
-
-}
-
-
-fun FeedCrew(crew: List<Sloth>) {
+class Sloth(val SlothName:String, val isTwoFingered: Boolean):Mammal(SlothName)
+data class Panda(val PandaName: String):Mammal(PandaName)
+data class Kooala(val KooalaName:String):Mammal(KooalaName)
+fun FeedCrew(crew: List<Mammal>) {
     crew.forEach {
         it.eat()
         println("${it.name} ate some red leaves")

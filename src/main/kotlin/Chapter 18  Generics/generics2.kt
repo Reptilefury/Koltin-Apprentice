@@ -36,7 +36,13 @@ class  EvenList<T>(val list:List<T>){
     fun contents():List<T>
 }*/
 
+
+//Inline declaration tells the compiler that any calls to this method must be compiled in line so that its still possible to accept the type information of the generic type.
+
 fun main() {
+    if(item is Container<*>){
+        val itemInContainer = item.removeItem()
+    }
      val result = EvenList<String>(listOf("This ", "Check"))
      TestingParameter<String, Int>("", 1)
     var arrayUtil = ArrayUtil<Int>(arrayOf(1, 2, 3, 4, 5, 6))
