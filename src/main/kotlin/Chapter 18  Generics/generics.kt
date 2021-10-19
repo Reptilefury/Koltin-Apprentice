@@ -86,6 +86,15 @@ private fun MoveEverythingToTruck(container: Container<T>){
         println("Moved your containers with your ${container.contents()} to the truck")
     }
 private fun MoveEverythingIntoNewPlace(item:T){
+    val containers = thingInTruck.filterIsInstance<Container<T>>()
+    for(contianer in containers){
+        thingInTruck.remove(contianer)
+        while (container.canRemoveAnotherItem()){
+            val itemInContainer = container.removeAnotherItem()
+            println("Unpacked your $itemInContainer")
+            tryToMoveItemIntoNewPlace(itemInContainer)
+        }
+    }
     if(item.checkIsOk()){
        thingsInNewPlace.add(item)
        println("Moved your $item into new place!!")
