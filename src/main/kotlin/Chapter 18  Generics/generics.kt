@@ -190,7 +190,7 @@ class CardBoardBox: Container<BreakableThing>{
 fun main() {
    val expensiveMover = Mover(BreakableThings)
     expensiveMover.moveEverythingIntoNewPlace()
-    expensiveMover.moveEverything(null)
+    expensiveMover.moveEverything(CardBoardBox())
     expensiveMover.finishMove()
     television.smash()
     val cheapThings = listOf(
@@ -221,19 +221,52 @@ fun main() {
     things.add("Steve")
     println("things: $things")
     val map = mapOf(
-        Pair("one", 1 ),
+        Pair("one", 1),
         Pair("two", ""),
-        Pair("Three",3)
+        Pair("Three", 3)
     )
     //val one = map.get(1)
     val one = map[1]
-   val valuesForKeysWithE = map.keys
-       .filter {it.contains("e")}
-       .map {"Value for $it: ${map[it]}"}
+    val valuesForKeysWithE = map.keys
+        .filter { it.contains("e") }
+        .map { "Value for $it: ${map[it]}" }
     println("Values for Keys with E: $valuesForKeysWithE")
     println("Names: ${names.toBulletedList()}")
 //    println("Names: ${names.toBulletedList()}")
 //println("Things: ${things.toBulletedList()}")
-
- }
+    val ints = listOf(1, 2, 3, 4)
+    val NUMBERS: List<Number> = ints
+    val moreInts: List<Int> = NUMBERS
+    val mutableInts = mutableListOf(1, 2, 3, 4, 5)
+    val MutableNumbers: MutableList<Number> = mutableInts
+    fun compare(comparator: Comparable<Number>) {
+        val int: Int = 1
+        comparator.compareTo(int)
+        val float: Float = 1.0f
+        comparator.compareTo(float)
+        intComparable.compareTo(float)
+        intComparable.compareTo(int)
+    }
+}
 //REPEAT GENERICS
+// READ ARTICLES ON
+//- Covariant - Types are the ones you have seen marked as <out T>
+//Because T can only be part of a return value,
+//the relation of objects that take the same generic type is similar
+// to that of supertypes and subtypes you can assign something typed as
+//  List<Int> to a variable of type List<Number>, since Int is a subtype of Number
+
+//-Contravariant- types are the ones you have seen marked as <int T> Since T can only
+// be taken in as a parameter you can assume the inverse relation to a subtype and supertype
+//You can assign something Types as Comparable<Number> to a variable of type Comparable<Int>
+//Since number is a superType of Int
+//
+//- Invariant types are types that are simply marked as <T>. You cannot make inference about
+//relationships with other objects that take the same generic type since they both take in
+// and return objects of type T
+// Generics allow us to create classes or interfaces that operate on a type that is not
+//known when your code for that class or interface is written
+//Generic programming can allow us to centralize pieces of functionality in a highly reusable and easily
+//debuggable fashion
+//Type Erasure: Means that within a class that takes a generic type you won't have any
+//information about that type at compile unless the type with reified and inline function
