@@ -29,6 +29,9 @@ data class Address(
             "Los Angeles", "CA", "90201", AddressType.Billing)
         println("Billing Address: \n$billingAddress\n")
 
+     override fun toString():String{
+         return forPostalabel()
+     }
 
     }
 
