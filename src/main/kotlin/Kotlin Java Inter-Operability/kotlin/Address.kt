@@ -17,23 +17,27 @@ data class Address(
     val country: String = "Australia"
 
 ) {
-    fun main(){
-        fun postalLabel(): String {
-            var printedAddress = streetline1
-            streetline2.let{ printedAddress = "\n$streetline2"}
-            printedAddress += "\n$city, $state $postalCode"
-            printedAddress += "\n${country.toUpperCase()}"
-            return printedAddress
-        }
-        val billingAddress = Address("123 Fake Street", "4th floor",
-            "Los Angeles", "CA", "90201", AddressType.Billing)
-        println("Billing Address: \n$billingAddress\n")
 
-     override fun toString():String{
-         return forPostalabel()
-     }
 
+
+}
+fun main(){
+    fun postalLabel(): String {
+        var printedAddress = streetline1
+        streetline2.let{ printedAddress = "\n$streetline2"}
+        printedAddress += "\n$city, $state $postalCode"
+        printedAddress += "\n${country.toUpperCase()}"
+        return printedAddress
     }
+    val billingAddress = Address("123 Fake Street", "4th floor",
+        "Los Angeles", "CA", "90201", AddressType.Billing)
+    println("Billing Address: \n$billingAddress\n")
 
-
+    override fun toString():String{
+        return forPostalabel()
+    }
+    user.addOrUpdateAddress(billingAddress)
+    println("User info after adding address:\n$user")
+    println("Shipping Label:")
+    printLabelFor(user, addressType.Shipping)
 }
