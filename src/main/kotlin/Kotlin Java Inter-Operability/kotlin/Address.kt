@@ -25,9 +25,9 @@ data class Address(
         return printedAddress
     }
 
-    override fun toString():String{
-        return forPostalabel()
-    }
+/*    override fun toString():String{
+      //  return forPostalabel()
+    }*/
 }
 fun main(){
 
@@ -36,16 +36,18 @@ fun main(){
     println("Billing Address: \n$billingAddress\n")
 
 
-    user.addOrUpdateAddress(billingAddress)
-    println("User info after adding address:\n$user")
+    //user.addOrUpdateAddress(billingAddress)
+    //println("User info after adding address:\n$user")
     println("Shipping Label:")
-    printLabelFor(user, addressType.Shipping)
+    //printLabelFor(user, addressType.Shipping)
 }
+/*
 fun forPostalabel():String{
-var printedAddress = streetline1
-streetLine2?.let {printedAddress += "\n$it"}
+//var printedAddress = streetline1
+//streetLine2?.let {printedAddress += "\n$it"}
 printedAddress += "\n$city, $state $postalCode"
 printedAddress += "\n${country.toUpperCase()}"
 return printedAddress
 }
+*/
 

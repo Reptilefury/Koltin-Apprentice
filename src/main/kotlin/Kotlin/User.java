@@ -1,3 +1,4 @@
+/*
 package Kotlin ;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class User {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
+*/
 /*
   public String getCity() {
     return city;
@@ -49,7 +51,8 @@ public class User {
 
   public void setCountry(String country) {
     this.country = country;
-  }*/
+  }*//*
+
 
   @Override
   public String toString() {
@@ -61,3 +64,4 @@ public class User {
 
 
 }
+*/

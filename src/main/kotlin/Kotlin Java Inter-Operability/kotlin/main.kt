@@ -1,3 +1,4 @@
+package `Kotlin Java Inter-Operability`.kotlin/*
 package `Kotlin Java Inter-Operability`.kotlin
 
 import Kotlin.User
@@ -9,4 +10,4 @@ user.lastName = "Stone"
 user.city = "Melbourne"
 user.country = "Australia"
     println("UserInfo:\n$user")
-}
+}*/

@@ -89,11 +89,11 @@ private fun MoveEverythingIntoNewPlace(item:T){
     val containers = thingInTruck.filterIsInstance<Container<T>>()
     for(contianer in containers){
         thingInTruck.remove(contianer)
-        while (container.canRemoveAnotherItem()){
+/*        while (container.canRemoveAnotherItem()){
             val itemInContainer = container.removeAnotherItem()
             println("Unpacked your $itemInContainer")
             tryToMoveItemIntoNewPlace(itemInContainer)
-        }
+        }*/
     }
     if(item.checkIsOk()){
        thingsInNewPlace.add(item)
@@ -236,16 +236,16 @@ fun main() {
 //println("Things: ${things.toBulletedList()}")
     val ints = listOf(1, 2, 3, 4)
     val NUMBERS: List<Number> = ints
-    val moreInts: List<Int> = NUMBERS
+   // val moreInts: List<Int> = NUMBERS
     val mutableInts = mutableListOf(1, 2, 3, 4, 5)
-    val MutableNumbers: MutableList<Number> = mutableInts
+   // val MutableNumbers: MutableList<Number> = mutableInts
     fun compare(comparator: Comparable<Number>) {
         val int: Int = 1
         comparator.compareTo(int)
         val float: Float = 1.0f
         comparator.compareTo(float)
-        intComparable.compareTo(float)
-        intComparable.compareTo(int)
+      //  intComparable.compareTo(float)
+        //intComparable.compareTo(int)
     }
 }
 //REPEAT GENERICS

@@ -1,3 +1,4 @@
+/*
 package Kotlin;
 
 public class MyJavaFile {
@@ -8,3 +9,4 @@ public class MyJavaFile {
 
     }
 }
+*/

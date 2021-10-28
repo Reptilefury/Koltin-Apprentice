@@ -1,3 +1,4 @@
+/*
 package Kotlin
 
 class MyFirst {
@@ -5,3 +6,8 @@ class MyFirst {
         return a + b
     }
 }
+val anotherUser = User()
+fun main(){
+    println("Another user has ${anotherUser.address.count() addresses}")
+
+}*/

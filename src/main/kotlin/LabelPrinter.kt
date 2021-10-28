@@ -1,3 +1,4 @@
+/*
 import Kotlin.User
 import `Kotlin Java Inter-Operability`.kotlin.fullName
 
@@ -15,4 +16,4 @@ fun labelFor(user: User, type:AddressType):String{
 }
  fun printLabelForUser(user: User, type:AddressType){
      println(labelFor(user, type))
- }
+ }*/
