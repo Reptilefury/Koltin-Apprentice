@@ -4,7 +4,11 @@ object SpacePort {
     fun investigateSpace(spaceCraft: SpaceCraft) {
         try {
             spaceCraft.launch()
-        } catch (exception: Exception) {
+        } catch (exception: OutOfFuelException) {
+            spaceCraft.sendMessageToEarth(exception.localizedMessage)
+        }catch(exception: SpaceToEarthConnectionException){
+            spaceCraft.sendMessageToEarth(exception.localizedMessage)
+        }catch(exception:BrokenEngineException){
             spaceCraft.sendMessageToEarth(exception.localizedMessage)
         }
     }
@@ -17,17 +21,20 @@ class spaceCraft {
     var fuel: Int = 0
     fun launch() {
         if (fuel < 5) {
-            throw Exception("Out of fuel cannot take off")
+            throw OutOfFuelException()
+            sendMessageToEarth("The tank is filled")
             return
         }
         if (isConnectionAvailable) {
-            throw Exception("No connection to earth cannot take off!!")
+            throw SpaceToEarthConnectionException()
+
             return
         }
         if (isEngineInOrder) {
-            throw Exception("Engine is out of fuel cannot take off!!")
-            return
+            throw BrokenEngineException()
+                 return
         }
+
         throw Exception("I'm trynna launch man so chill tf out")
         fuel -= 5
         throw Exception("I'm in space man chilling with some fucking aliens man, say: Cheese Mr Doobie Duh!!")
@@ -36,12 +43,21 @@ class spaceCraft {
 
     }
 
+    fun repairEngine(){
+        isEngineInOrder= true
+        sendMessageToEarth("The engine is in order")
+    }
+
     fun sendMessageToEarth(message: String) {
         println("SpaceCraftToEarth:$message")
     }
 
 
 }
+class OutOfFuelException: Exception("Out of fuel. Cannot take off")
+class BrokenEngineException: Exception("The Engine is Broken cannot take off")
+class SpaceToEarthConnectionException:Exception("SpaceCraft connection to Earth failed cannot take off!!")
+
 
 //isConnectionAvailable= no connection with earth cannot take off, isEngineInOrder= the engine is broken cannot take off, isInSpace = true, fuel = 0
 fun main() {
