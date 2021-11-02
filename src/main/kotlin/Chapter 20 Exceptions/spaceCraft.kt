@@ -1,15 +1,24 @@
 package `Chapter 20 Exceptions`
 
 object SpacePort {
-    fun investigateSpace(spaceCraft: SpaceCraft) {
+    fun investigateSpace(SpaceCraft: spaceCraft) {
         try {
-            spaceCraft.launch()
+            SpaceCraft.launch()
         } catch (exception: OutOfFuelException) {
-            spaceCraft.sendMessageToEarth(exception.localizedMessage)
+            SpaceCraft.sendMessageToEarth(exception.localizedMessage)
+            SpaceCraft.refuel()
         }catch(exception: SpaceToEarthConnectionException){
-            spaceCraft.sendMessageToEarth(exception.localizedMessage)
+            SpaceCraft.sendMessageToEarth(exception.localizedMessage)
+            SpaceCraft.fixConnection()
         }catch(exception:BrokenEngineException){
-            spaceCraft.sendMessageToEarth(exception.localizedMessage)
+            SpaceCraft.sendMessageToEarth(exception.localizedMessage)
+        SpaceCraft.repairEngine()
+        } finally {
+            if(SpaceCraft.isInSpace){
+                SpaceCraft.landing()
+            } else{
+                investigateSpace(SpaceCraft)
+            }
         }
     }
 }
@@ -42,10 +51,22 @@ class spaceCraft {
         isInSpace = true
 
     }
-
+fun refuel(){
+    fuel += 5
+    sendMessageToEarth("The spaceCraft is refueled")
+}
     fun repairEngine(){
-        isEngineInOrder= true
-        sendMessageToEarth("The engine is in order")
+         isEngineInOrder = true
+        sendMessageToEarth("All engine systems automatically repaired, prepare to launch!!")
+    }
+ fun fixConnection(){
+     isConnectionAvailable = true
+     sendMessageToEarth("Hello Earthlings!! can you terrestials hear me ")
+     sendMessageToEarth("oh wait yeah connection is successful")
+ }
+    fun landing(){
+        isInSpace = false
+        sendMessageToEarth("We are landing up here, oh no I mean we ")
     }
 
     fun sendMessageToEarth(message: String) {
