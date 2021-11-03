@@ -1,5 +1,7 @@
 package `Chapter 20 Exceptions`
 
+import java.util.*
+
 object SpacePort {
     fun investigateSpace(SpaceCraft: spaceCraft) {
         try {
@@ -78,12 +80,18 @@ fun refuel(){
 class OutOfFuelException: Exception("Out of fuel. Cannot take off")
 class BrokenEngineException: Exception("The Engine is Broken cannot take off")
 class SpaceToEarthConnectionException:Exception("SpaceCraft connection to Earth failed cannot take off!!")
-
-
+/*
+val date: Date =  try{
+    Date(userInput) 
+} catch (e: Exception){
+  Date()
+}
+*/
+//TRY CATCH AS an expression
 //isConnectionAvailable= no connection with earth cannot take off, isEngineInOrder= the engine is broken cannot take off, isInSpace = true, fuel = 0
 fun main() {
     val SpaceCraft = spaceCraft()
-    SpacePort.investigateSpace(SpaceCraft())
+    SpacePort.investigateSpace(spaceCraft())
 
 
 }
