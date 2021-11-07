@@ -1,4 +1,5 @@
 package `Functional Programming with Kotlin`
+import `Chapter 20 Exceptions`.AnotherFunction
 import java.util.*
 
 import kotlin.random.Random
@@ -43,10 +44,13 @@ class Robot(val name: String){
         println("$name: \t$message")
     }
     object BattleField{
-        fun BeginBattle(firstRobot: Robot, secondRobot:Robot){
+        fun BeginBattle(firstRobot: Robot, secondRobot:Robot,
+          onBattleEnded:(Robot)-> Unit
+                        ){
             var winner:Robot? = null
             battle(firstRobot, secondRobot)
             winner = if(firstRobot.isAlive) firstRobot else secondRobot
+            onBattleEnded(winner)
         }
         fun battle(firstRobot:Robot, secondRobot:Robot){
             firstRobot.attack(secondRobot)
@@ -64,7 +68,17 @@ class Robot(val name: String){
 fun main() {
    val firstRobot = Robot("Experimental Space Navigation")
    val secondRobot = Robot("Extra-terrestrial safety droid")
-    Robot.BattleField.BeginBattle(firstRobot, secondRobot)
+    val onBattleEnded = {winner:Robot -> winner.report("won!")}
+    Robot.BattleField.BeginBattle(firstRobot, secondRobot,::onBattleEnded)
+}
+fun onBattleEnded(winner:Robot){
+    winner.report("Won!")
+}
+fun someFunction():()->Int{
+    return ::AnotherFunction
+}
+fun AnotherFunction():Int{
+    return Random.nextInt()
 }
 /*
 class Robot(val name : String){
@@ -84,3 +98,10 @@ class Robot(val name : String){
     }
 
 }*/
+val Pow:(Int, Int)-> Double= {base, exponent -> Math.pow(base.toDouble(), exponent.toDouble(),)}
+val root:(Int)->Double ={Math.sqrt(it.toDouble())}
+var result = 0
+val sum = {a:Int, b:Int->
+    result = a + b
+}
+//sum(4,4)
