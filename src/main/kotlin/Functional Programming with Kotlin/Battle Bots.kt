@@ -105,3 +105,6 @@ val sum = {a:Int, b:Int->
     result = a + b
 }
 //sum(4,4)
+/*fun String.print() = System.out.println(this)
+val string = "Hello world"
+string.print()*/
