@@ -34,11 +34,29 @@ class Robot(val name: String){
 
 
     private var health:Int = 0
+private var random:Random= Random()
 
     init {
         strength = Random.nextInt(100) + 10
         report("Created(Strength: $strength)")
     }
+fun damage(damage:Int){
+    val blocked = random.randomBlock()
+    if(blocked){
+        report("Blocked attack")
+        return
+    }
+    health -= damage
+    report("Damage -$damage, health $health ")
+    if(health <= 0){
+        isAlive = false
+    }
+
+}
+fun attack(robot: Robot){
+    val damage = random.randomDamange(strength)
+    robot.damage(damage.toInt())
+}
 
     fun report(message:String){
         println("$name: \t$message")
