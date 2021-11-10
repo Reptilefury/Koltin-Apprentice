@@ -1,6 +1,36 @@
-package `Functional Programming with Kotlin`
-import `Chapter 20 Exceptions`.AnotherFunction
 import java.util.*
+
+
+/*class Robot(val name: String){
+    var strength:Int = 0
+    private var health:Int = 100
+    private var random: Random= Random()
+    var isAlive:Boolean = false
+    init{
+        strength = random.randomStrength()
+        report("Created (strength $strength)")
+    }
+    fun report(message:String){
+        println("$name: \t$message")
+    }
+    private  fun damage(damage:Int){}
+    val blocked = random.randomBlock()
+    if (blocked){
+        report("Blocked attack")
+    return
+    }
+    health -= damage
+    report("Damage -$damage, health $health")
+    if (health <= 0){
+        isAlive = false
+    }
+}
+infix fun attack(robot:Robot){
+    val damage = random.randomDamage(strength)
+    robot.damage(damage)
+}*/
+
+package `Functional Programming with Kotlin`
 
 import kotlin.random.Random
 
@@ -8,7 +38,9 @@ import kotlin.random.Random
 class Robot(val name: String){
     var strength: Int = 0
     var isAlive:Boolean = true
-
+   val reportOnWon = fun(robot:Robot){
+       robot.report("Won!!")
+   }
      fun attack(robot:Robot){
 
          val damage = (strength * 0.1 + Random.nextInt(10).toInt() )
@@ -63,14 +95,15 @@ fun attack(robot: Robot){
     }
     object BattleField{
         fun BeginBattle(firstRobot: Robot, secondRobot:Robot,
-          onBattleEnded:(Robot)-> Unit
+          onBattleEnded:Robot.()-> Unit
                         ){
             var winner:Robot? = null
             battle(firstRobot, secondRobot)
             winner = if(firstRobot.isAlive) firstRobot else secondRobot
-            onBattleEnded(winner)
+            winner.onBattleEnded()
+            //onBattleEnded(winner)
         }
-        fun battle(firstRobot:Robot, secondRobot:Robot){
+        fun battle(firstRobot: java.awt.Robot, secondRobot: java.awt.Robot){
             firstRobot.attack(secondRobot)
             if(secondRobot.isAlive.not()){
                 return
@@ -98,6 +131,7 @@ fun someFunction():()->Int{
 fun AnotherFunction():Int{
     return Random.nextInt()
 }
+
 /*
 class Robot(val name : String){
     var strength:Int = 0
@@ -115,7 +149,8 @@ class Robot(val name : String){
         println("$name: \t$message")
     }
 
-}*/
+}*//*
+
 val Pow:(Int, Int)-> Double= {base, exponent -> Math.pow(base.toDouble(), exponent.toDouble(),)}
 val root:(Int)->Double ={Math.sqrt(it.toDouble())}
 var result = 0
@@ -123,6 +158,8 @@ val sum = {a:Int, b:Int->
     result = a + b
 }
 //sum(4,4)
+*/
 /*fun String.print() = System.out.println(this)
 val string = "Hello world"
-string.print()*/
+string.print()*//*
+
