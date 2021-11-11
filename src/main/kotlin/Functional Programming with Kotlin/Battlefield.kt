@@ -2,6 +2,7 @@ package `Functional Programming with Kotlin`
 
 import Robot.BattleField.battle
 import java.awt.Robot
+/*
 
 object Battlefield {
     inline fun beginBattle(firstRobot: Robot, secondRobot:Robot, onBattleEnded:Robot.() -> Unit){
@@ -21,4 +22,4 @@ object Battlefield {
         }
         battle(firstRobot, secondRobot)
     }
-}
+}*/

@@ -1,3 +1,5 @@
+import `Functional Programming with Kotlin`.randomBlock
+import `Functional Programming with Kotlin`.randomDamange
 import java.util.*
 
 
@@ -30,7 +32,6 @@ infix fun attack(robot:Robot){
     robot.damage(damage)
 }*/
 
-package `Functional Programming with Kotlin`
 
 import kotlin.random.Random
 
@@ -41,15 +42,15 @@ class Robot(val name: String){
    val reportOnWon = fun(robot:Robot){
        robot.report("Won!!")
    }
-     fun attack(robot:Robot){
+/*     fun attack(robot:Robot){
 
          val damage = (strength * 0.1 + Random.nextInt(10).toInt() )
 
          robot.damage(damage.toInt())
 
-     }
+     }*/
 
-    fun damage(damage:Int){
+/*    fun damage(damage:Int){
         val blocked = Random.nextBoolean()
         if(blocked){
             report("Blocked attack")
@@ -61,19 +62,19 @@ class Robot(val name: String){
         if(health <= 0){
             isAlive = false
         }
-    }
+    }*/
 
 
 
     private var health:Int = 0
-private var random:Random= Random()
+private var random: Boolean = Random.nextBoolean()
 
     init {
         strength = Random.nextInt(100) + 10
         report("Created(Strength: $strength)")
     }
 fun damage(damage:Int){
-    val blocked = random.randomBlock()
+    val blocked = random
     if(blocked){
         report("Blocked attack")
         return
@@ -86,14 +87,34 @@ fun damage(damage:Int){
 
 }
 fun attack(robot: Robot){
-    val damage = random.randomDamange(strength)
-    robot.damage(damage.toInt())
+    //val damage = random.randomDamage(strength)
+    //robot.damage(damage.toInt())
 }
 
     fun report(message:String){
         println("$name: \t$message")
     }
-    object BattleField{
+/*    object Battlefield {
+        inline fun beginBattle(firstRobot:Robot, secondRobot:Robot, onBattleEnded:Robot.() -> Unit){
+            var winner:Robot? = null
+            battle(firstRobot,secondRobot)
+            winner = if(firstRobot.isAlive) firstRobot else secondRobot
+            winner.onBattleEnded()
+            onBattleEnded(winner)
+        }
+         fun battle(firstRobot:Robot, secondRobot: java.awt.Robot){
+            firstRobot attack secondRobot
+            if(secondRobot.isAlive.not()){
+                return
+            }
+            secondRobot attack firstRobot
+            if(firstRobot.isAlive.not()){
+                return
+            }
+            battle(firstRobot, secondRobot)
+        }
+    }*/
+  object BattleField{
         fun BeginBattle(firstRobot: Robot, secondRobot:Robot,
           onBattleEnded:Robot.()-> Unit
                         ){
@@ -103,7 +124,7 @@ fun attack(robot: Robot){
             winner.onBattleEnded()
             //onBattleEnded(winner)
         }
-        fun battle(firstRobot: java.awt.Robot, secondRobot: java.awt.Robot){
+        fun battle(firstRobot: Robot, secondRobot: Robot){
             firstRobot.attack(secondRobot)
             if(secondRobot.isAlive.not()){
                 return
@@ -163,3 +184,4 @@ val sum = {a:Int, b:Int->
 val string = "Hello world"
 string.print()*//*
 
+/* REAPEAT FUNCTIONAL PROGRAMMING WITH KOTLIN */
