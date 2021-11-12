@@ -24,16 +24,16 @@ fun main(){
 
 
 
-   var  Mike = MikeTyson.inc()
-    val Ronnie = RonnieColeman.dec()
-   Mike.plusAssign(5000)
+   //var  Mike = MikeTyson.inc()
+    //val Ronnie = RonnieColeman.dec()
+   //Mike.plusAssign(5000)
    MikeTyson += 50000
    //Ronnie.plusAssign(5000)
-    Ronnie.minusAssign(3000)
+    //Ronnie.minusAssign(3000)
     RonnieColeman -= 50000
 
-      println(Mike)
-      println(Ronnie)
+      //println(Mike)
+      //println(Ronnie)
     company += militaryCommunicationDepartment
     company += ForeignAffairsDepartment
     company += HumanResourceDepartment
@@ -46,5 +46,12 @@ fun main(){
     militaryCommunicationDepartment += AlbertEinstein
     ForeignAffairsDepartment += DorianYates
     ForeignAffairsDepartment += RonnieColeman
+    val firstEmployee = militaryCommunicationDepartment[0]
+    militaryCommunicationDepartment[0]?.plusAssign(20000)
+    militaryCommunicationDepartment[1] = BruceLee
+    if(BruceLee !in militaryCommunicationDepartment){
+        println("${BruceLee.name} no longer works here")
+    }
+
  }
 //I WILL START ON HANDLING COLLECTIONS TOMORROW MORNING

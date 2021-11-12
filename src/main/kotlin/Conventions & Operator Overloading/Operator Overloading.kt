@@ -1,27 +1,17 @@
 package `Conventions & Operator Overloading`
 
+import java.awt.Color
+
 fun main(){
-    Baking()
-}
-fun Baking(){
-    println("BAKED MUFFINS!!")
-        //val add = fluffy += snowflake
-//println(fluffy + snowflake)
-}
 
-class Kitten( val message:String){
-operator fun plusAssign(kitten: Kitten){
-
+    printUserInfo("John Doe")
+    printUserInfo("Hannibal Lecter", 22)
+    printUserInfo("Lew Bloom", 24, Color.BLUE)
+}
+fun printUserInfo(name:String, age: Int=0, favColor: Color= Color.BLUE){
+    println("Name$name, Age:$age, Favourite Color: $favColor")
 }
 
-}
-val fluffy:Kitten = Kitten("Fluffy")
-
-val snowflake = Kitten("Snowflake")
-
-fun takeHome(){
-
-}
 
 
 
