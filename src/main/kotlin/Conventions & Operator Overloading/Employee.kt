@@ -60,6 +60,12 @@ data class Employee(val company: Company, val name: String, var salary: Int) : C
         return this
     }
 
+    override fun compareTo(other: Employee): Int {
+        TODO("Not yet implemented")
+    }
+}
+//missing code
+/*
     operator fun rangeTo(other: Employee): List<Employee> {
         val currentIndex = company.allEmployees.indexOf(this)
         val otherIndex = company.allEmployees.indexOf(other)
@@ -69,7 +75,6 @@ data class Employee(val company: Company, val name: String, var salary: Int) : C
         }
 
         return company.allEmployees.slice(currentIndex..otherIndex)
-    }
 
     override operator fun compareTo(other: Employee): Int {
         return when (other) {
@@ -78,4 +83,4 @@ data class Employee(val company: Company, val name: String, var salary: Int) : C
         }
     }
 
-}
+}*/
