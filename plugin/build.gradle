@@ -20,6 +20,9 @@ repositories {
 }
 
 dependencies {
+
+//    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.21"
+
     // Use the awesome Spock testing and specification framework
     testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
 }
