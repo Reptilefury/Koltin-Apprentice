@@ -45,3 +45,36 @@ object BuildingYard {
         }
     }
 }
+private fun CookRice(){
+    println("Starting to cook the rice on: ${getCurrentThreadName()}")
+    Thread.sleep(1000)
+    println("The rice has been cooked already!!")
+}
+private fun PrepareFish(){
+    println("Start to prepare the Fish on: ${getCurrentThreadName()}")
+    Thread.sleep(2000)
+     println("The fish has been prepared!!")
+}
+private fun cutTheVegetables(){
+    println("Start to cut the vegetables on: ${getCurrentThreadName()}")
+   Thread.sleep(2000)
+    println("The fish has already been prepared!!")
+}
+ private fun RollTheSUshi(){
+     println("Starting to Roll the Sushi on: ${getCurrentThreadName}")
+      Thread.sleep(2000)
+      println("Completely rolled the sushi!")
+ }
+private fun PrintCurrentThreadName(){
+  println("Running on ${getCurrentThreadName() }")
+
+}
+private fun getCurrentThreadName():String = Thread.currentThread().name
+fun main(){
+    PrintCurrentThreadName()
+    var sushiCookingJob = Job
+    val time = measureTimeMillis{
+       sushiCookingJob = GlobalScope.launch(newSingleThreadContext("SushiThread"))
+
+    }
+}
