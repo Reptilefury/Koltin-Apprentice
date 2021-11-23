@@ -78,3 +78,27 @@ fun main(){
 
     }
 }
+private suspend fun calculateAnswerToLifeAndTheUniverseAndEverything():Int{
+
+    delay(5000)
+    return 42
+}
+private suspend fun showProgressAnimation(){
+    var ProgressBarLength = 30
+    var currentPosition = 0
+    while(true){
+        print("\r")
+
+        val progressBar = (0 until ProgressBarLength)
+            .map {if (it == currentPosition) ""else "⛓"}
+            .joinToString("")
+        print(progressBar)
+        delay(50)
+        if (currentPosition == ProgressBarLength){
+            currentPosition = 0
+
+        }
+        currentPosition++
+
+    }
+}
